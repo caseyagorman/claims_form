@@ -9,11 +9,12 @@ const ClaimsForm = require('./ClaimsForm.model')
 
 
 app.use(cors());
-app.use(bodyParser.urlencoded({
-    extended: true
-  }));
+// app.use(bodyParser.urlencoded({
+//     extended: true
+//   }));
 
-// app.use(bodyParser.json());
+// request.setValue(application/json, forHTTPHeaderField: "Content-Type") 
+app.use(bodyParser.json({ type: 'application/json' }))
 app.use('/claims-form', claimsFormRoutes);
 mongoose.connect('mongodb://127.0.0.1:27017/ClaimsForm', { useNewUrlParser: true });
 
@@ -21,7 +22,7 @@ const connection = mongoose.connection;
 
 connection.once('open', function() {
     console.log("MongoDB database connection established successfully");
-})
+});
 
 
 app.listen(PORT, function() {
@@ -29,8 +30,8 @@ app.listen(PORT, function() {
 });
 
 claimsFormRoutes.route('/add').post(function(req, res) {
-    console.log("req", req)
-    console.log("req.body", req.body)
+    console.log("req", req.body)
+    console.log("req.body", req.body.name)
     let claims = new ClaimsForm(req.body);
     console.log(claims)
     claims.save()

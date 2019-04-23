@@ -35,9 +35,10 @@ export function addItem(entry) {
       mode: "cors", 
       headers: {
         Accept: "application/json",
-       "Content-Type": "application/x-www-form-urlencoded"
+        "Content-Type": "application/json"
+      //  "Content-Type": "application/x-www-form-urlencoded"
       },
-      body: entry
+      body: JSON.stringify(entry)
     })
       .then(response => response.json())
       // .then(() => dispatch(fetchItems()));
