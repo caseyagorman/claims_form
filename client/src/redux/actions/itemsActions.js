@@ -1,11 +1,11 @@
 import * as types from "./actionTypes";
 function itemsApi() {
-  return `http://localhost:5000/api/entries`;
+  return `http://localhost:4000/claims-form/add`;
 }
 
-function deleteItemApi() {
-  return "http://localhost:5000/api/delete-entry";
-}
+// function deleteItemApi() {
+//   return "http://localhost:4000/api/delete-entry";
+// }
 export function receiveItems(items) {
   return { type: types.RECEIVE_ITEMS, items: items };
 }
@@ -32,10 +32,10 @@ export function addItem(entry) {
     return fetch(itemsApi(), {
       method: "POST",
       mode: "cors",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      },
+      // headers: {
+      //   Accept: "application/json",
+      //   "Content-Type": "application/json"
+      // },
       body: JSON.stringify(entry)
     })
       .then(response => response.json())
@@ -43,27 +43,27 @@ export function addItem(entry) {
   };
 }
 
-export function deleteItem(item) {
-  return dispatch => {
-    return fetch(deleteItemApi(), {
-      method: "POST",
-      mode: "cors",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      },
-      body: item
-    })
-      .then(response => response.json())
-      // .then(() => dispatch(fetchItems()));
-  };
-}
+// export function deleteItem(item) {
+//   return dispatch => {
+//     return fetch(deleteItemApi(), {
+//       method: "POST",
+//       mode: "cors",
+//       headers: {
+//         Accept: "application/json",
+//         "Content-Type": "application/json"
+//       },
+//       body: item
+//     })
+//       .then(response => response.json())
+//       // .then(() => dispatch(fetchItems()));
+//   };
+// }
 
-export function answered(answer) {
-  return {
-    type: types.ANSWER,
-    payload: {
-      answer: answer
-    }
-  };
-}
+// export function answered(answer) {
+//   return {
+//     type: types.ANSWER,
+//     payload: {
+//       answer: answer
+//     }
+//   };
+// }
