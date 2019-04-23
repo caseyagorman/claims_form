@@ -5,6 +5,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const PORT = 4000;
 const claimsFormRoutes = express.Router();
+const ClaimsForm = require('./ClaimsForm.model')
 
 app.use('/claims-form', claimsFormRoutes);
 app.use(cors());
@@ -20,14 +21,15 @@ connection.once('open', function() {
 
 claimsFormRoutes.route('/add').post(function(req, res) {
     let claimsForm = new ClaimsForm(req.body);
-    claimsForm.save()
-    .then(claimsForm => {
-        res.status(200).json({'claimsForm': 'claim form added successfully'});
+    console.log(claimsForm)
+    // claimsForm.save()
+    // .then(claimsForm => {
+    //     res.status(200).json({'claimsForm': 'claim form added successfully'});
 
-    })
-    .catch(err => {
-        res.status(400).send('adding new claim form failed');
-    });
+    // })
+    // .catch(err => {
+    //     res.status(400).send('adding new claim form failed');
+    // });
 })
 
 
