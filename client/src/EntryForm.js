@@ -112,7 +112,7 @@ class EntryForm extends React.Component {
 
     submitForm(event) {
         event.preventDefault();
-        const formData = this.state
+        const formData  =  this.state
         console.log(formData)
         this.props.itemsActions.addItem(formData)
         // let files = this.state.pictures;
