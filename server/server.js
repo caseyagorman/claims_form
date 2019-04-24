@@ -47,9 +47,10 @@ claimsFormRoutes.route('/').get(function(req, res) {
         if (err) {
             console.log(err);
         } else {
-            res.json(claimsForm);
             const doc = new PDFDocument;
             const currentClaimsForm = claimsForm.slice(-1)[0]
+            console.log(currentClaimsForm)
+            res.json(currentClaimsForm);
             const name = currentClaimsForm.name
             const address1 = currentClaimsForm.address1
             const city1 = currentClaimsForm.city1
@@ -65,7 +66,7 @@ claimsFormRoutes.route('/').get(function(req, res) {
             const dateOfIncident = currentClaimsForm.dateOfIncident
             const timeOfIncident = currentClaimsForm.timeOfIncident
             const location = currentClaimsForm.location
-            const vehicleyear = currentClaimsForm.vehicleyear
+            const vehicle = currentClaimsForm.vehicle
             const basisOfClaim = currentClaimsForm.basisOfClaim
             const cityEmployeety = currentClaimsForm.cityEmployeety
             const description = currentClaimsForm.description
