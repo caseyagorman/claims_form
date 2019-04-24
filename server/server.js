@@ -30,12 +30,8 @@ app.listen(PORT, function() {
 });
 
 claimsFormRoutes.route('/add').post(function(req, res) {
-    console.log("req", req.body)
-    console.log("req.body", req.body.name)
     let claims = new ClaimsForm(req.body);
-    console.log(claims)
     claims.save()
-    console.log("saving claim worked")
     .then(claims => {
         res.status(200).json({'claimsForm': 'claim form added successfully'});
 
@@ -44,3 +40,13 @@ claimsFormRoutes.route('/add').post(function(req, res) {
         res.status(400).send('adding new claim form failed');
     });
 })
+
+claimsFormRoutes.route('/').get(function(req, res) {
+    ClaimsForm.find(function(err, claimsForm) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.json(claimsForm);
+        }
+    });
+});
