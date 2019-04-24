@@ -49,8 +49,43 @@ claimsFormRoutes.route('/').get(function(req, res) {
         } else {
             res.json(claimsForm);
             const doc = new PDFDocument;
-            const name = claimsForm.slice(-1)[0].name
-            console.log('name', name)
+            const currentClaimsForm = claimsForm.slice(-1)[0]
+            const name = currentClaimsForm.name
+            const address1 = currentClaimsForm.address1
+            const city1 = currentClaimsForm.city1
+            const state1 = currentClaimsForm.state1
+            const dayPhone1 = currentClaimsForm.dayPhone1
+            const evePhone1 = currentClaimsForm.evePhone1
+            const cellPhone1 = currentClaimsForm.cellPhone1
+            const dayPhone2 = currentClaimsForm.dayPhone2
+            const evePhone2 = currentClaimsForm.evePhone2
+            const cellPhone2 = currentClaimsForm.cellPhone2
+            const dateOfBirth = currentClaimsForm.dateOfBirth
+            const ssn = currentClaimsForm.ssn
+            const dateOfIncident = currentClaimsForm.dateOfIncident
+            const timeOfIncident = currentClaimsForm.timeOfIncident
+            const location = currentClaimsForm.location
+            const vehicleyear = currentClaimsForm.vehicleyear
+            const basisOfClaim = currentClaimsForm.basisOfClaim
+            const cityEmployeety = currentClaimsForm.cityEmployeety
+            const description = currentClaimsForm.description
+            const item1 = currentClaimsForm.item1
+            const amount1 = currentClaimsForm.amount1
+            const item2 = currentClaimsForm.item2
+            const amount2 = currentClaimsForm.amount2
+            const item3 = currentClaimsForm.item3
+            const amount3 = currentClaimsForm.amount3
+            const item4 = currentClaimsForm.item4
+            const amount4 = currentClaimsForm.amount4
+            const total = currentClaimsForm.total
+            const witnessAddress1 = currentClaimsForm.witnessAddress1
+            const witnessPhone1 = currentClaimsForm.witnessPhone1
+            const witness2 = currentClaimsForm.witness2
+            const witnessAddress2 = currentClaimsForm.witnessAddress2
+            const witnessPhone2 = currentClaimsForm.witnessPhone2
+       
+
+            
             doc.pipe(fs.createWriteStream('./output.pdf'));
  
 // Embed a font, set the font size, and render some text
