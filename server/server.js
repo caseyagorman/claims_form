@@ -31,7 +31,45 @@ app.listen(PORT, function() {
 });
 
 claimsFormRoutes.route('/add').post(function(req, res) {
-    let claims = new ClaimsForm(req.body);
+  
+    let claims = new ClaimsForm({
+        name: req.body.name,
+        address1: req.body.address1,
+        city1: req.body.city1,
+        state1: req.body.state1,
+        dayPhone1: req.body.dayPhone1,
+        evePhone1: req.body.evePhone1,
+        cellPhone1: req.body.cellPhone1,
+        dayPhone2: req.body.dayPhone2,
+        evePhone2: req.body.evePhone2,
+        cellPhone2: req.body.cellPhone2,
+        dateOfBirth: req.body.dateOfBirth,
+        ssn: req.body.ssn,
+        dateOfIncident: req.body.dateOfIncident,
+        timeOfIncident: req.body.timeOfIncident,
+        location: req.body.location,
+        vehicle: req.body.vehicle,
+        basisOfClaim: req.body.basisOfClaim,
+        cityEmployeety: req.body.cityEmployeety,
+        description: req.body.description,
+        item1: req.body.item1,
+        amount1: req.body.amount1,
+        item2: req.body.item2,
+        amount2: req.body.amount2,
+        item3: req.body.item3,
+        amount3: req.body.amount3,
+        item4: req.body.item4,
+        amount4: req.body.amount4,
+        total: req.body.total,
+        witnessAddress1: req.body.witnessAddress1,
+        witnessPhone1: req.body.witnessPhone1,
+        witness2: req.body.witness2,
+        witnessAddress2: req.body.witnessAddress2,
+        witnessPhone2: req.body.witnessPhone2,
+
+    });
+    console.log(claims)
+   
     claims.save()
     .then(claims => {
         res.status(200).json({'claimsForm': 'claim form added successfully'});
@@ -92,30 +130,28 @@ claimsFormRoutes.route('/').get(function(req, res) {
 // Embed a font, set the font size, and render some text
             doc.font('Helvetica-Bold')
             .fontSize(25)
-            .text(name, 100, 100);
+            .text("CLAIM AGAINST THE CITY AND COUNTY OF SAN FRANCISCO", 100, 100);
+
+            doc.font('Helvetica-Bold')
+            .fontSize(12)
+
+            .text("Before completing this form please read the instructions on the back. Untimely claims will be returned. Please submit this form and supporting documentation to the Controller’s Office, Claims Division, 1390 Market Street, 7th Floor, San Francisco, CA 94102 in person or by mail.", 100, 170)
+            
+            
+            doc.font('Helvetica-Bold')
+            .fontSize(12)
+            .text(name, 100, 250);
  
  
 // Add another page
-            doc.addPage()
-            .fontSize(25)
-            .text('Here is some vector graphics...', 100, 100);
+            doc.font('Helvetica-Bold')
+            .fontSize(12)
+            .text(address1, 100, 300);
  
-// Draw a triangle
-            doc.save()
-            .moveTo(100, 150)
-            .lineTo(100, 250)
-            .lineTo(200, 250)
-            .fill("#FF3300");
- 
-// Apply some transforms and render an SVG path with the 'even-odd' fill rule
-            doc.scale(0.6)
-            .translate(470, -380)
-            .path('M 250,75 L 323,301 131,161 369,161 177,301 z')
-            .fill('red', 'even-odd')
-            .restore();
  
 // Add some text with annotations
             doc.end();
         }
+    
     });
 });

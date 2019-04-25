@@ -27,7 +27,7 @@ let ClaimsForm = new Schema({
   }, 
   address2:{
       type: String,
-      required: true
+    //   required: true
   }, 
   city2:{
       type: String  
@@ -52,7 +52,7 @@ let ClaimsForm = new Schema({
   },
   dateOfIncident:{
       type: String,
-      required: true
+    //   required: true
   },
   timeOfIncident:{
       type: String  
@@ -66,19 +66,19 @@ let ClaimsForm = new Schema({
 
   basisOfClaim:{
     type: String,
-    required: true
+    // required: true
   },
 
   cityEmployee:{
       type: String,
-      required: true 
+    //   required: true 
   },  
   description:{
       type: String  
   }, 
   item1:{
       type: String,
-      required: true 
+    //   required: true 
   }, 
   amount1:{
       type: String  
