@@ -85,7 +85,8 @@ class EntryForm extends React.Component {
         witnessPhone1: "",
         witness2: "",
         witnessAddress2: "",
-        witnessPhone2: ""
+        witnessPhone2: "",
+        picture: ""
       };
       this.incrementIdx = this.incrementIdx.bind(this);
       this.handleTestClick = this.handleTestClick.bind(this);
@@ -97,6 +98,7 @@ class EntryForm extends React.Component {
       if (!formFields) {
         return (
           <div className="test-complete-message">
+          Press submit to complete form 
           </div>
         );
       }
@@ -111,27 +113,30 @@ class EntryForm extends React.Component {
 
 
     submitForm(event) {
-        event.preventDefault();
-        const formData  =  this.state
-        console.log(formData)
-        this.props.itemsActions.addItem(formData)
+        // event.preventDefault();
+        // const formData  =  this.state
+        // this.props.itemsActions.addItem(formData)
         // let files = this.state.pictures;
-        // const formData = new FormData();
+        const formData = new FormData();
         // files.forEach((file, i) => {
         //   formData.append(i, file);
         // });
-        // let formText = {
-        //   itemName: this.state.itemName,
-        //   itemDescription: this.state.itemDescription,
-        //   location: this.props.location
-        // };
+        let formText = {}
+        const stateObject = this.state
+        for (let key in stateObject){
+          if (key !== "picture" && key !== "idx"){
+
+                  formText[key] = stateObject[key]
+          }
+        }
+        console.log(formText)
         // formText = JSON.stringify(formText);
         // const blob = new Blob([formText], {
         //   type: "application/json"
         // });
         // formData.append("document", blob);
         // this.props.itemsActions.addItem(formData);
-        // event.target.reset();
+        event.target.reset();
       }
 
     handleChange(event) {
@@ -147,6 +152,7 @@ class EntryForm extends React.Component {
       return (
         <FormPage
           idx={idx}
+          displayField = {this.displayField}
           formFields={formFields}
           handleTestClick={this.handleTestClick}
           handleChange={this.handleChange}
