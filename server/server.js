@@ -31,53 +31,58 @@ app.listen(PORT, function() {
 });
 
 claimsFormRoutes.route('/add').post(function(req, res) {
-  
-    let claims = new ClaimsForm({
-        name: req.body.name,
-        address1: req.body.address1,
-        city1: req.body.city1,
-        state1: req.body.state1,
-        dayPhone1: req.body.dayPhone1,
-        evePhone1: req.body.evePhone1,
-        cellPhone1: req.body.cellPhone1,
-        dayPhone2: req.body.dayPhone2,
-        evePhone2: req.body.evePhone2,
-        cellPhone2: req.body.cellPhone2,
-        dateOfBirth: req.body.dateOfBirth,
-        ssn: req.body.ssn,
-        dateOfIncident: req.body.dateOfIncident,
-        timeOfIncident: req.body.timeOfIncident,
-        location: req.body.location,
-        vehicle: req.body.vehicle,
-        basisOfClaim: req.body.basisOfClaim,
-        cityEmployeety: req.body.cityEmployeety,
-        description: req.body.description,
-        item1: req.body.item1,
-        amount1: req.body.amount1,
-        item2: req.body.item2,
-        amount2: req.body.amount2,
-        item3: req.body.item3,
-        amount3: req.body.amount3,
-        item4: req.body.item4,
-        amount4: req.body.amount4,
-        total: req.body.total,
-        witnessAddress1: req.body.witnessAddress1,
-        witnessPhone1: req.body.witnessPhone1,
-        witness2: req.body.witness2,
-        witnessAddress2: req.body.witnessAddress2,
-        witnessPhone2: req.body.witnessPhone2,
+  console.log(req.body)
+  const reader = new FileReader();
+  reader.onload = function() {
+      console.log(reader.result)
+  }
+  console.log(reader.readAsText(req.body))
+    // let claims = new ClaimsForm({
+    //     name: req.body.name,
+    //     address1: req.body.address1,
+    //     city1: req.body.city1,
+    //     state1: req.body.state1,
+    //     dayPhone1: req.body.dayPhone1,
+    //     evePhone1: req.body.evePhone1,
+    //     cellPhone1: req.body.cellPhone1,
+    //     dayPhone2: req.body.dayPhone2,
+    //     evePhone2: req.body.evePhone2,
+    //     cellPhone2: req.body.cellPhone2,
+    //     dateOfBirth: req.body.dateOfBirth,
+    //     ssn: req.body.ssn,
+    //     dateOfIncident: req.body.dateOfIncident,
+    //     timeOfIncident: req.body.timeOfIncident,
+    //     location: req.body.location,
+    //     vehicle: req.body.vehicle,
+    //     basisOfClaim: req.body.basisOfClaim,
+    //     cityEmployeety: req.body.cityEmployeety,
+    //     description: req.body.description,
+    //     item1: req.body.item1,
+    //     amount1: req.body.amount1,
+    //     item2: req.body.item2,
+    //     amount2: req.body.amount2,
+    //     item3: req.body.item3,
+    //     amount3: req.body.amount3,
+    //     item4: req.body.item4,
+    //     amount4: req.body.amount4,
+    //     total: req.body.total,
+    //     witnessAddress1: req.body.witnessAddress1,
+    //     witnessPhone1: req.body.witnessPhone1,
+    //     witness2: req.body.witness2,
+    //     witnessAddress2: req.body.witnessAddress2,
+    //     witnessPhone2: req.body.witnessPhone2,
 
-    });
-    console.log(claims)
+    // });
+    // console.log(claims)
    
-    claims.save()
-    .then(claims => {
-        res.status(200).json({'claimsForm': 'claim form added successfully'});
+    // claims.save()
+    // .then(claims => {
+    //     res.status(200).json({'claimsForm': 'claim form added successfully'});
 
-    })
-    .catch(err => {
-        res.status(400).send('adding new claim form failed');
-    });
+    // })
+    // .catch(err => {
+    //     res.status(400).send('adding new claim form failed');
+    // });
 })
 
 claimsFormRoutes.route('/').get(function(req, res) {

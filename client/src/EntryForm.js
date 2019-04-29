@@ -7,6 +7,7 @@ import FormPage from "./FormPage"
 
 const formFields = [
   {name:"name", type: "text",  placeholder: "name", label: "Claimant's Name"},
+  {name: "picture", type: "file",  placeholder: "address", label: "File"},  
   {name: "address1", type: "text",  placeholder: "address", label: "Claimant's Home Address"},
   {name: "city1",type: "text", placeholder: "city", label: "City" }, 
   {name: "state1", type: "text", placeholder: "state", label: "State"},
@@ -113,11 +114,12 @@ class EntryForm extends React.Component {
 
 
     submitForm(event) {
-        // event.preventDefault();
-        // const formData  =  this.state
-        // this.props.itemsActions.addItem(formData)
-        // let files = this.state.pictures;
+        event.preventDefault();
+        const file = this.state.picture;
+        console.log("files", file)
         const formData = new FormData();
+        formData.append('file', file)
+        console.log("formData", formData.get("file"))
         // files.forEach((file, i) => {
         //   formData.append(i, file);
         // });
@@ -129,14 +131,19 @@ class EntryForm extends React.Component {
                   formText[key] = stateObject[key]
           }
         }
-        console.log(formText)
+       
         // formText = JSON.stringify(formText);
+        console.log("formText", formText)
         // const blob = new Blob([formText], {
         //   type: "application/json"
         // });
-        // formData.append("document", blob);
-        // this.props.itemsActions.addItem(formData);
-        event.target.reset();
+        console.log("formData", formData)
+        formData.append("formText", formText);
+        console.log(formData.get("formText"))
+        // console.log("blob", blob)
+        // console.log(formData.get("document"))
+        this.props.itemsActions.addItem(formData);
+      
       }
 
     handleChange(event) {

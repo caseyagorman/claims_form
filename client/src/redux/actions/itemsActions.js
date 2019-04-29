@@ -28,16 +28,16 @@ export function receiveItems(items) {
 // }
 
 export function addItem(entry) {
-  console.log(entry)
+  console.log(entry.get("document"))
   return dispatch => {
     return fetch(itemsApi(), {
       method: "POST",
       mode: "cors", 
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      //  "Content-Type": "application/x-www-form-urlencoded"
-      },
+      // headers: {
+      //   Accept: "application/json",
+      //   "Content-Type": "application/json"
+      // //  "Content-Type": "application/x-www-form-urlencoded"
+      // },
       body: JSON.stringify(entry)
     })
       .then(response => response.json())

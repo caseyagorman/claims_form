@@ -21,21 +21,23 @@ class Main extends Component {
     return <Entries items={items} />;
   }
 
-  displayEntryForm(location) {
-    if (!location) {
-      return <div>Allow location to submit form</div>;
-    }
+  // displayEntryForm(location) {
+  //   if (!location) {
+  //     return <div>Allow location to submit form</div>;
+  //   }
 
-    return <EntryForm location={location} />;
-  }
+  //   return <EntryForm location={location} />;
+  // }
+  
   render() {
     return (
       <div className="container">
+      <EntryForm/>
         {/* <h1 style={{ textAlign: "center" }}>Confiscated Items</h1>
         {this.displayEntries(this.props.items)}
         <br /> */}
         {/* <h2 style={{ textAlign: "center" }}>Enter new confiscated item</h2> */}
-        {this.displayEntryForm(this.props.location)}
+        {/* {this.displayEntryForm(this.props.location)} */}
       </div>
     );
   }
