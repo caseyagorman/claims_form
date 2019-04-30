@@ -10,7 +10,7 @@ const PDFDocument = require('pdfkit');
 const fs = require('fs');
 const multer = require('multer')
 
-
+app.use('/uploads', express.static('uploads'));
 app.use(cors());
 // app.use(bodyParser.urlencoded({
 //     extended: true
@@ -36,18 +36,24 @@ app.listen(PORT, function() {
 const storage = multer.diskStorage({
     destination: function (req, res, cb){
         cb(null, './uploads')
+    },
+    filename: function(req, file, cb) {
+        cb(null, Date.now() + file.originalname)
     }
 })
 const upload = multer({storage: storage});
 claimsFormRoutes.route('/add').post(upload.single('file'), function(req, res) {
-  console.log(req.body)
+  
+  
+  console.log(req.file)
 //   const reader = new FileReader();
 //   reader.onload = function() {
 //       console.log(reader.result)
 //   }
 //   console.log(reader.readAsText(req.body))
-    // let claims = new ClaimsForm({
+    let claims = new ClaimsForm({
     //     name: req.body.name,
+           image: req.file.path,
     //     address1: req.body.address1,
     //     city1: req.body.city1,
     //     state1: req.body.state1,
@@ -81,8 +87,8 @@ claimsFormRoutes.route('/add').post(upload.single('file'), function(req, res) {
     //     witnessAddress2: req.body.witnessAddress2,
     //     witnessPhone2: req.body.witnessPhone2,
 
-    // });
-    // console.log(claims)
+    });
+    console.log(claims)
    
     // claims.save()
     // .then(claims => {
@@ -92,7 +98,7 @@ claimsFormRoutes.route('/add').post(upload.single('file'), function(req, res) {
     // .catch(err => {
     //     res.status(400).send('adding new claim form failed');
     // });
-})
+});
 
 claimsFormRoutes.route('/').get(function(req, res) {
     ClaimsForm.find(function(err, claimsForm) {

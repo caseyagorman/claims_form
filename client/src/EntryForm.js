@@ -112,10 +112,9 @@ class EntryForm extends React.Component {
       this.setState({ idx: new_idx });
     }
 
-    handleFileChange(event) {
-      const files = Array.from(event.target.files);
-      this.setState({ pictures: files });
-    }
+
+
+
     submitForm(event) {
         event.preventDefault();
         const formData = new FormData();
@@ -131,7 +130,7 @@ class EntryForm extends React.Component {
         }
         formText = JSON.stringify(formText)
         formData.append("formText", formText);
-        console.log(formText)
+        console.log(formData.get('file'))
 
         // files.forEach((file, i) => {
         //   formData.append(i, file);
@@ -149,8 +148,15 @@ class EntryForm extends React.Component {
       }
 
     handleChange(event) {
-        this.setState({ [event.target.name]: event.target.value });
+      console.log(event.target.files)
+      if (event.target.name === "picture" && event.target.files.length){
+      const files = event.target.files[0];
+      this.setState({ picture: files });
       }
+      this.setState({ [event.target.name]: event.target.value });
+    }
+
+
     handleTestClick(e, idx) {
       e.preventDefault();
       this.incrementIdx(idx);
