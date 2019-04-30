@@ -33,12 +33,13 @@ export function addItem(entry) {
     return fetch(itemsApi(), {
       method: "POST",
       mode: "cors", 
+      // headers: { 'content-type': 'multipart/form-data' },
       // headers: {
       //   Accept: "application/json",
       //   "Content-Type": "application/json"
       // //  "Content-Type": "application/x-www-form-urlencoded"
       // },
-      body: JSON.stringify(entry)
+      body: entry
     })
       .then(response => response.json())
       // .then(() => dispatch(fetchItems()));

@@ -8,6 +8,8 @@ const claimsFormRoutes = express.Router();
 const ClaimsForm = require('./ClaimsForm.model')
 const PDFDocument = require('pdfkit');
 const fs = require('fs');
+const multer = require('multer')
+
 
 app.use(cors());
 // app.use(bodyParser.urlencoded({
@@ -30,13 +32,20 @@ app.listen(PORT, function() {
     console.log("Server is running on Port: " + PORT);
 });
 
-claimsFormRoutes.route('/add').post(function(req, res) {
+
+const storage = multer.diskStorage({
+    destination: function (req, res, cb){
+        cb(null, './uploads')
+    }
+})
+const upload = multer({storage: storage});
+claimsFormRoutes.route('/add').post(upload.single('file'), function(req, res) {
   console.log(req.body)
-  const reader = new FileReader();
-  reader.onload = function() {
-      console.log(reader.result)
-  }
-  console.log(reader.readAsText(req.body))
+//   const reader = new FileReader();
+//   reader.onload = function() {
+//       console.log(reader.result)
+//   }
+//   console.log(reader.readAsText(req.body))
     // let claims = new ClaimsForm({
     //     name: req.body.name,
     //     address1: req.body.address1,
