@@ -87,7 +87,7 @@ class EntryForm extends React.Component {
         // witness2: "",
         // witnessAddress2: "",
         // witnessPhone2: "",
-        picture: ""
+        pictures: []
       };
       this.incrementIdx = this.incrementIdx.bind(this);
       this.handleTestClick = this.handleTestClick.bind(this);
@@ -112,43 +112,62 @@ class EntryForm extends React.Component {
       this.setState({ idx: new_idx });
     }
 
-
-
-
     submitForm(event) {
-        event.preventDefault();
-        const formData = new FormData();
-        const file = this.state.picture;  
-        formData.append('file', file)
-        let formText = {}
-        let stateObject = this.state
-        for (let key in stateObject){
-          if (key !== "picture" && key !== "idx"){
+      event.preventDefault();
+      let files = this.state.pictures;
+      const formData = new FormData();
+      files.forEach((file, i) => {
+        formData.append(i, file);
+      });
+      let formText = {}
+      let stateObject = this.state
+      for (let key in stateObject){
+        if (key !== "picture" && key !== "idx"){
 
-                  formText[key] = stateObject[key]
-          }
+                formText[key] = stateObject[key]
         }
-        formText = JSON.stringify(formText)
-        formData.append("formText", formText);
-        console.log(formData.get('file'))
-
-        // files.forEach((file, i) => {
-        //   formData.append(i, file);
-        // });
-        
-        
-      
-        // formText = JSON.stringify(formText);
-        // const blob = new Blob([formText], {
-        //   type: "application/json"
-        // });
-    
-        this.props.itemsActions.addItem(formData);
-      
       }
+      formText = JSON.stringify(formText);
+      const blob = new Blob([formText], {
+        type: "application/json"
+      });
+      formData.append("document", blob);
+      this.props.itemsActions.addItem(formData);
+      event.target.reset();
+
+    }
+    // submitForm(event) {
+    //     event.preventDefault();
+    //     const formData = new FormData();
+    //     const file = this.state.picture;  
+    //     formData.append('file', file)
+   
+    //     formText = JSON.stringify(formText)
+    //     const blob = new Blob([formText], {
+    //       type: "application/json"
+    //     })
+    //     formData.append("document", blob);
+
+    //     console.log(formData)
+    //     console.log(formData.get("document"))
+    //     console.log(formData.get("file"))
+
+    //     // files.forEach((file, i) => {
+    //     //   formData.append(i, file);
+    //     // });
+        
+        
+      
+    //     // formText = JSON.stringify(formText);
+    //     // const blob = new Blob([formText], {
+    //     //   type: "application/json"
+    //     // });
+    
+    //     this.props.itemsActions.addItem(formData);
+      
+    //   }
 
     handleChange(event) {
-      console.log(event.target.files)
       if (event.target.name === "picture" && event.target.files.length){
       const files = event.target.files[0];
       this.setState({ picture: files });
