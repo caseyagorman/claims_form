@@ -2,10 +2,9 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 let ClaimsForm = new Schema({
-
-    image: {
-        type: String
-    }
+     img: 
+        { data: Buffer, contentType: String }
+    
 //   name:{
 //       type: String,
 //       required: true

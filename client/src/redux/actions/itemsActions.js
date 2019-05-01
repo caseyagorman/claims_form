@@ -1,6 +1,8 @@
 import * as types from "./actionTypes";
 function itemsApi() {
-  return `http://localhost:4000/claims-form/add`;
+  // return `http://localhost:4000/claims-form/add`;
+  return `http://localhost:4000/uploadfile`;
+
 }
 
 // function deleteItemApi() {
@@ -33,7 +35,9 @@ export function addItem(entry) {
     return fetch(itemsApi(), {
       method: "POST",
       mode: "cors", 
-      // headers: { 'content-type': 'multipart/form-data' },
+      headers: { 
+        Accept: "application/json"
+    },
       // headers: {
       //   Accept: "application/json",
       //   "Content-Type": "application/json"
