@@ -2,18 +2,38 @@ const express = require('express')
 const bodyParser= require('body-parser')
 const multer = require('multer');
 const claimsFormRoutes = express.Router();
-
+const mongoose = require('mongoose');
+const PORT = 4000;
+const ClaimsForm = require('./ClaimsForm.model')
+const fs = require('fs');
 //CREATE EXPRESS APP
 const app = express();
 app.use(bodyParser.urlencoded({extended: true}))
-  
+mongoose.connect('mongodb://127.0.0.1:27017/ClaimsForm', { useNewUrlParser: true });
+
+const connection = mongoose.connection;
+
+connection.once('open', function() {
+    console.log("MongoDB database connection established successfully");
+});
+
+app.listen(PORT, function() {
+    console.log("Server is running on Port: " + PORT);
+});
 //ROUTES WILL GO HERE
 app.get('/',function(req,res){
-    res.sendFile(__dirname + '/index.html');
-   
+    ClaimsForm.find(function(err, claimsForm) {
+    // res.sendFile(__dirname + '/index.html');
+    if (err) {
+            console.log(err);
+    } else {
+          
+            console.log(claimsForm)
+            res.json(claimsForm);
+    }
   });
  
-
+})
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
       cb(null, 'uploads')
@@ -44,9 +64,24 @@ var storage = multer.diskStorage({
       error.httpStatusCode = 400
       return next(error)
     }
-      res.send(file)
+
+  
+    let claims = new ClaimsForm()
+    claims.img.data = fs.readFileSync(req.file.path)
+    console.log(claims.img.data)
+    claims.img.contentType = 'image/png';
+  
+        claims.save()
+        .then(claims => {
+        res.status(200).json({'claimsForm': 'claim form added successfully'});
+
+    })
+        .catch(err => {
+        res.status(400).send('adding new claim form failed');
+    });
+});
+     
     
-  })
 
 
 //   app.post('/add', upload.single('picture'), (req, res) => {
@@ -95,15 +130,15 @@ var storage = multer.diskStorage({
             
 //           })
 //         })
-const MongoClient = require('mongodb').MongoClient
-const myurl = 'mongodb://localhost:27017'; 
-MongoClient.connect(myurl, (err, client) => {
-  if (err) return console.log(err)
-  db = client.db('test') 
-  app.listen(4000, () => {
-    console.log('listening on 4000')
-  })
-})
+// const MongoClient = require('mongodb').MongoClient
+// const myurl = 'mongodb://localhost:27017'; 
+// MongoClient.connect(myurl, (err, client) => {
+//   if (err) return console.log(err)
+//   db = client.db('test') 
+//   app.listen(4000, () => {
+//     console.log('listening on 4000')
+//   })
+// })
 
 
 
