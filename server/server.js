@@ -35,10 +35,10 @@ var storage = multer.diskStorage({
 //     }
 //       res.send(file)
 // })
-  app.post('/uploadfile', upload.single('myFile'), (req, res, next) => {
+  app.post('/uploadfile', upload.single('file'), (req, res, next) => {
     console.log("hit upload file wooo")
     const file = req.file
-    // console.log(file)
+    console.log(file)
     if (!file) {
       const error = new Error('Please upload a file')
       error.httpStatusCode = 400

@@ -8,7 +8,7 @@ class EntryForm extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-        files: []
+        file: []
       };
 
       this.handleChange = this.handleChange.bind(this);
@@ -17,11 +17,11 @@ class EntryForm extends React.Component {
   
     submitForm(event) {
       event.preventDefault();
-      let files = this.state.files;
-      console.log(files)
+      let file = this.state.file;
+      console.log(file)
       const formData = new FormData();
-      formData.append('files', files)
-      console.log(formData.get("files"))
+      formData.append('file', file)
+      console.log(formData.get("file"))
       this.props.itemsActions.addItem(formData);
 
     }
@@ -37,7 +37,7 @@ class EntryForm extends React.Component {
 
       return (
         <form>
-      <input onChange={this.handleChange} type="file" name="files" 
+      <input onChange={this.handleChange} type="file" name="file" 
       />
       <button
         onClick={this.submitForm}
