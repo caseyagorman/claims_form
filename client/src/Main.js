@@ -11,33 +11,29 @@ class Main extends Component {
     this.props.itemsActions.fetchItems();
     this.props.locationActions.getLocation();
   }
+  
 
-  displayEntries(items) {
+
+  displayImages(items){
     if (!items) {
-      return <div />;
+      return <div>No items</div>
     }
-
-    console.log(items)
-    // return <Entries items={items} />;
+    items = Object.values(items)
+    for (let i=0; i<items.length; i++){
+      if (items[i].img){
+        return  <img style= {{height: 200}}src={`data:image/jpeg;base64,${items[i].img.data}`} />
+      }
+    }
   }
 
-  // displayEntryForm(location) {
-  //   if (!location) {
-  //     return <div>Allow location to submit form</div>;
-  //   }
-
-  //   return <EntryForm location={location} />;
-  // }
   
   render() {
     return (
       <div className="container">
       <EntryForm/>
         <h1 style={{ textAlign: "center" }}>Confiscated Items</h1>
-        {this.displayEntries(this.props.items)}
+        {this.displayImages(this.props.items)}
         <br /> 
-        {/* <h2 style={{ textAlign: "center" }}>Enter new confiscated item</h2> */}
-        {/* {this.displayEntryForm(this.props.location)} */}
       </div>
     );
   }
