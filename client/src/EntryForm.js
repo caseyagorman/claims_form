@@ -7,7 +7,7 @@ import { bindActionCreators } from "redux";
 
 
 const formFields = [
-  {name:"name", type: "text",  placeholder: "name", label: "Claimant's Name"},
+  {name:"claimantName", type: "text",  placeholder: "name", label: "Claimant's Name"},
   {name: "file", type: "file",  placeholder: "picture", label: "file"},
   {name: "address1", type: "text",  placeholder: "address", label: "Claimant's Home Address"},
   {name: "city1",type: "text", placeholder: "city", label: "City" }, 
@@ -52,7 +52,7 @@ class EntryForm extends React.Component {
       this.state = {
         idx: 0,
         file: [],
-        fname: "",
+        claimantName: "",
         address1: "",
         city1: "",
         state1:"",

@@ -5,13 +5,12 @@ let ClaimsForm = new Schema({
      img: 
         { data: Buffer, contentType: String },
     
-  name:{
+  claimantName:{
       type: String,
       required: true
   },
   address1:{
-      type: String, 
-      required: true 
+      type: String
   }, 
   city1:{
       type: String
