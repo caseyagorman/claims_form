@@ -14,33 +14,28 @@ class Entries extends Component {
           <thead>
             <tr>
               <th>Item</th>
-              <th>Description</th>
-              <th>Date</th>
-              <th>Location</th>
               <th>Image</th>
             </tr>
           </thead>
           <tbody>
             {items.map(function(item) {
               return (
-                <tr key={item.entryId}>
+                <tr>
                   <td>
                     {" "}
-                    <DeleteEntry item={item.entryId} />
+                    {/* <DeleteEntry item={item.entryId} /> */}
                     {item.item}
                   </td>
-                  <td>{item.description}</td>
-                  <td>{item.date}</td>
-                  <td>
+                  {/* <td>
                     {item.latitude}, {item.longitude}
                     <MapContainer lat={item.latitude} lng={item.longitude} />
-                  </td>
+                  </td> */}
                   <td>
-                    {item.image !== undefined && (
+                    {item.img !== undefined && (
                       <img
                         style={{ height: 150 }}
                         alt="display form"
-                        src={`data:image/jpeg;base64,${item.image}`}
+                        src={`data:image/jpeg;base64,${item.img.data}`}
                       />
                     )}
                   </td>

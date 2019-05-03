@@ -14,17 +14,21 @@ class Main extends Component {
   
 
 
-  displayImages(items){
+  displayEntries(items){
     if (!items) {
       return <div>No items</div>
     }
     items = Object.values(items)
-    for (let i=0; i<items.length; i++){
-      if (items[i].img){
-        return  <img style= {{height: 200}}src={`data:image/jpeg;base64,${items[i].img.data}`} />
-      }
-    }
+    return <Entries items={items} />
   }
+  //   for (let i=0; i<items.length; i++){
+  //     if (items[i].img){
+  //       return  <img style= {{height: 200}}src={`data:image/jpeg;base64,${items[i].img.data}`} />
+  //     }
+  //   }
+  // }
+
+
 
   
   render() {
@@ -32,7 +36,7 @@ class Main extends Component {
       <div className="container">
       <EntryForm/>
         <h1 style={{ textAlign: "center" }}>Confiscated Items</h1>
-        {this.displayImages(this.props.items)}
+        {this.displayEntries(this.props.items)}
         <br /> 
       </div>
     );
