@@ -50,9 +50,9 @@ class EntryForm extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
+        idx: 0,
         file: [],
         fname: "",
-        idx: 0,
         address1: "",
         city1: "",
         state1:"",
@@ -98,29 +98,39 @@ class EntryForm extends React.Component {
   
     handleSubmit(event) {
       event.preventDefault();
-      const file = this.state.file;
-      const fname = this.state.fname
       const formData = new FormData();
+      let formText = {}
+      let stateObject = this.state
+      for (let key in stateObject){
+        if (key !== "file" && key !== "idx"){
+
+                formText[key] = stateObject[key]
+        }
+      }
+      formText = JSON.stringify(formText);
+      formData.append("formText", formText);
+      const file = this.state.file;
       formData.append('file', file)
-      formData.append('fname', fname)
       this.props.itemsActions.addItem(formData);
 
     }
 
-    handleNextClick(e, idx) {
-      e.preventDefault();
+    handleNextClick(event, idx) {
+      event.preventDefault();
       let new_idx = idx + 1;
       this.setState({ idx: new_idx });
-
+      event.target.reset()
 }
 
     handleChange(event) {
-
         if (event.target.name === "file"){
-        const file = event.target.files[0];
         this.setState({ file: event.target.files[0] });
         }
-        this.setState({ fname: event.target.value });
+     
+
+        else if (event.target.name !== "file") {
+        this.setState({ [event.target.name]: event.target.value });
+        }
       }
 
     displayField(formFields) {
@@ -145,7 +155,8 @@ class EntryForm extends React.Component {
           formFields={formFields}
           handleNextClick={this.handleNextClick}
           handleChange={this.handleChange}
-          // incrementIdx={this.incrementIdx}
+          incrementIdx={this.incrementIdx}
+          handleSubmit={this.handleSubmit}
         />
 
       );

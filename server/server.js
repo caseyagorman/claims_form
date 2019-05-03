@@ -51,7 +51,8 @@ const storage = multer.diskStorage({
       error.httpStatusCode = 400
       return next(error)
     }
-
+    console.log(file)
+    console.log(req.body)
     let claims = new ClaimsForm()
     claims.img.data = fs.readFileSync(req.file.path)
     claims.img.contentType = 'image/png';
