@@ -6,21 +6,10 @@ export default function items(state = initialState.items, action) {
   switch (action.type) {
     case FETCH_ITEMS:
       return action;
-    case RECEIVE_ITEMS:
-      return update(state, { $set: action.items });
-
-    case ANSWER:
-      const answer = action.payload;
-      console.log(answer)
-      return Object.assign({}, state, {
-        // testItems: [
-        //   ...state.testItems,
-        //   {
-        //     testItems: testResult.testItem,
-        //     answeredCorrectly: testResult.answeredCorrectly
-        //         }
-              // ]
-            });
+    // case RECEIVE_ITEMS:
+    //   return update(state, { $set: action.items });
+      case RECEIVE_ITEMS:
+      return Object.assign({}, action.items);
     default:
       return state;
   }

@@ -1,7 +1,13 @@
 import * as types from "./actionTypes";
+function formApi() {
+  // return `http://localhost:4000/claims-form/add`;
+  return `http://localhost:4000/form`;
+
+}
+
 function itemsApi() {
   // return `http://localhost:4000/claims-form/add`;
-  return `http://localhost:4000/uploadfile`;
+  return `http://localhost:4000/items`;
 
 }
 
@@ -9,40 +15,35 @@ function itemsApi() {
 //   return "http://localhost:4000/api/delete-entry";
 // }
 export function receiveItems(items) {
+  console.log(items)
   return { type: types.RECEIVE_ITEMS, items: items };
 }
 
 
-// export function fetchItems() {
-//   console.log("fetching items");
-//   return dispatch => {
-//     return fetch(itemsApi(), {
-//       method: "GET",
-//       mode: "cors",
-//       headers: {
-//         Accept: "application/json",
-//         "Content-Type": "application/json"
-//       }
-//     })
-//       .then(response => response.json())
-//       .then(items => dispatch(receiveItems(items)));
-//   };
-// }
-
-export function addItem(entry) {
-  console.log(entry.get("document"))
+export function fetchItems() {
+  console.log("getting items")
   return dispatch => {
     return fetch(itemsApi(), {
+      method: "GET",
+      mode: "cors",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      }
+    })
+      .then(response => response.json())
+      .then(items => dispatch(receiveItems(items.claimsForm)));
+  };
+}
+
+export function addItem(entry) {
+  return dispatch => {
+    return fetch(formApi(), {
       method: "POST",
       mode: "cors", 
       headers: { 
         Accept: "application/json"
     },
-      // headers: {
-      //   Accept: "application/json",
-      //   "Content-Type": "application/json"
-      // //  "Content-Type": "application/x-www-form-urlencoded"
-      // },
       body: entry
     })
       .then(response => response.json())

@@ -8,7 +8,7 @@ import * as locationActions from "./redux/actions/locationActions";
 
 class Main extends Component {
   componentDidMount() {
-    // this.props.itemsActions.fetchItems();
+    this.props.itemsActions.fetchItems();
     this.props.locationActions.getLocation();
   }
 
@@ -17,8 +17,8 @@ class Main extends Component {
       return <div />;
     }
 
-    items = Object.values(items);
-    return <Entries items={items} />;
+    console.log(items)
+    // return <Entries items={items} />;
   }
 
   // displayEntryForm(location) {
@@ -33,9 +33,9 @@ class Main extends Component {
     return (
       <div className="container">
       <EntryForm/>
-        {/* <h1 style={{ textAlign: "center" }}>Confiscated Items</h1>
+        <h1 style={{ textAlign: "center" }}>Confiscated Items</h1>
         {this.displayEntries(this.props.items)}
-        <br /> */}
+        <br /> 
         {/* <h2 style={{ textAlign: "center" }}>Enter new confiscated item</h2> */}
         {/* {this.displayEntryForm(this.props.location)} */}
       </div>

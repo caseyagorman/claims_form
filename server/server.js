@@ -8,6 +8,8 @@ const ClaimsForm = require('./ClaimsForm.model')
 const PDFDocument = require('pdfkit');
 const fs = require('fs');
 const app = express();
+const cors = require('cors');
+app.use(cors());
 app.use(bodyParser.urlencoded({extended: true}))
 mongoose.connect('mongodb://127.0.0.1:27017/ClaimsForm', { useNewUrlParser: true });
 
@@ -44,18 +46,13 @@ const storage = multer.diskStorage({
    
   const upload = multer({ storage: storage })
 
-  app.post('/uploadfile', upload.single('file'), (req, res, next) => {
-    const file = req.file
-    if (!file) {
-      const error = new Error('Please upload a file')
-      error.httpStatusCode = 400
-      return next(error)
-    }
+  app.post('/form', upload.single('picture'), (req, res) => {
     const form = JSON.parse(req.body.formText)
-    console.log(form['claimantName'])
-    let claims = new ClaimsForm()
-    claims.img.data = fs.readFileSync(req.file.path)
-    claims.img.contentType = 'image/png';
+    const img = fs.readFileSync(req.file.path)
+    const encodeImage = img.toString('base64')
+    const claims = new ClaimsForm()
+    claims.img.contentType = req.file.mimetype,
+    claims.img.image = new Buffer(encodeImage, 'base64')
     claims.claimantName = form["claimantName"]
     claims.address1= form["address1"]
     claims.city1= form["city1"]
@@ -100,6 +97,15 @@ const storage = multer.diskStorage({
     });
 });
    
+
+app.get('/items', (function(req, res) {
+  ClaimsForm.find(function(err, claimsForm) {
+    console.log(claimsForm)
+    if (err) return res.json({ success: false, error: err });
+         return res.json({claimsForm})
+      })
+  }))
+
 app.get('/pdf', (function(req, res) {
     ClaimsForm.find(function(err, claimsForm) {
         if (err) {

@@ -8,7 +8,7 @@ import { bindActionCreators } from "redux";
 
 const formFields = [
   {name:"claimantName", type: "text",  placeholder: "name", label: "Claimant's Name"},
-  {name: "file", type: "file",  placeholder: "picture", label: "file"},
+  {name: "picture", type: "file",  placeholder: "picture", label: "picture"},
   {name: "address1", type: "text",  placeholder: "address", label: "Claimant's Home Address"},
   {name: "city1",type: "text", placeholder: "city", label: "City" }, 
   {name: "state1", type: "text", placeholder: "state", label: "State"},
@@ -51,7 +51,7 @@ class EntryForm extends React.Component {
       super(props);
       this.state = {
         idx: 0,
-        file: [],
+        picture: [],
         claimantName: "",
         address1: "",
         city1: "",
@@ -102,15 +102,15 @@ class EntryForm extends React.Component {
       let formText = {}
       let stateObject = this.state
       for (let key in stateObject){
-        if (key !== "file" && key !== "idx"){
+        if (key !== "picture" && key !== "idx"){
 
                 formText[key] = stateObject[key]
         }
       }
       formText = JSON.stringify(formText);
       formData.append("formText", formText);
-      const file = this.state.file;
-      formData.append('file', file)
+      const picture = this.state.picture;
+      formData.append('picture', picture)
       this.props.itemsActions.addItem(formData);
 
     }
@@ -123,12 +123,12 @@ class EntryForm extends React.Component {
 }
 
     handleChange(event) {
-        if (event.target.name === "file"){
-        this.setState({ file: event.target.files[0] });
+        if (event.target.name === "picture"){
+        this.setState({ picture: event.target.files[0] });
         }
      
 
-        else if (event.target.name !== "file") {
+        else if (event.target.name !== "picture") {
         this.setState({ [event.target.name]: event.target.value });
         }
       }

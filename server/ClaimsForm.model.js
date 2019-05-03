@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 let ClaimsForm = new Schema({
      img: 
-        { data: Buffer, contentType: String },
+        { image: Buffer, contentType: String },
     
   claimantName:{
       type: String,
