@@ -1,7 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import Main from "./Main";
+import Entries from "./Entries"
+import EntryForm from "./EntryForm"
+import AppNav from "./AppNav"
 import * as serviceWorker from "./serviceWorker";
 import { Provider } from "react-redux";
 import { Router, Route } from "react-router-dom";
@@ -13,7 +15,9 @@ const store = configureStore(initialState);
 const AppRouter = () => (
   <Router history={history}>
     <div>
-      <Route path="//" component={Main} />
+    <AppNav/>
+      <Route path="//" component={EntryForm} />
+      <Route path="/items" component={Entries} />
     </div>
   </Router>
 );

@@ -124,6 +124,9 @@ let ClaimsForm = new Schema({
   witnessPhone2:{
       type: String  
   },
+  location:{
+      type: String
+  }
 })
 
 module.exports = mongoose.model('ClaimsForm', ClaimsForm)

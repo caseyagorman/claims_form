@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import FormPage from "./FormPage"
 import * as itemsActions from "./redux/actions/itemsActions";
+import * as locationActions from "./redux/actions/locationActions";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-
 
 
 const formFields = [
@@ -50,6 +50,7 @@ class EntryForm extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
+        formDisplaying: true, 
         idx: 0,
         picture: [],
         claimantName: "",
@@ -95,7 +96,12 @@ class EntryForm extends React.Component {
       this.handleSubmit = this.handleSubmit.bind(this);
       this.handleNextClick = this.handleNextClick.bind(this);
       }
-  
+      
+    componentDidMount(){
+      this.props.locationActions.getLocation();
+      console.log(this.props.location)
+    }
+
     handleSubmit(event) {
       event.preventDefault();
       const formData = new FormData();
@@ -107,6 +113,7 @@ class EntryForm extends React.Component {
                 formText[key] = stateObject[key]
         }
       }
+      formText["location"] = this.props.location
       formText = JSON.stringify(formText);
       formData.append("formText", formText);
       const picture = this.state.picture;
@@ -123,6 +130,7 @@ class EntryForm extends React.Component {
 }
 
     handleChange(event) {
+      console.log(this.props.location)
         if (event.target.name === "picture"){
         this.setState({ picture: event.target.files[0] });
         }
@@ -135,11 +143,7 @@ class EntryForm extends React.Component {
 
     displayField(formFields) {
         if (!formFields) {
-          return (
-            <div className="test-complete-message">
-            Press submit to complete form 
-            </div>
-          );
+          this.setState({ formDisplaying: false })
         }
     
         return formFields;
@@ -173,7 +177,8 @@ function mapStateToProps(state) {
   
   function mapDispatchToProps(dispatch) {
     return {
-      itemsActions: bindActionCreators(itemsActions, dispatch)
+      itemsActions: bindActionCreators(itemsActions, dispatch),
+      locationActions: bindActionCreators(locationActions, dispatch)
     };
   }
   

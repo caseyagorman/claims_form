@@ -86,6 +86,7 @@ const storage = multer.diskStorage({
     claims.witness2= form["witness2"]
     claims.witnessAddress2= form["witnessAddress2"]
     claims.witnessPhone2= form["witnessPhone2"]
+    claims.location = form["location"]
 
         claims.save()
         .then(claims => {

@@ -1,56 +1,43 @@
 import React, { Component } from "react";
-import { Table } from "react-bootstrap";
-import DeleteEntry from "./DeleteEntry";
-import MapContainer from "./MapContainer";
+import EntryPage from "./EntryPage"
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import * as itemsActions from "./redux/actions/itemsActions";
+import * as locationActions from "./redux/actions/locationActions";
 class Entries extends Component {
-  displayItems(items) {
+  componentDidMount() {
+    this.props.itemsActions.fetchItems();
+    this.props.locationActions.getLocation();
+  }
+
+  displayEntries(items){
     if (!items) {
-      return <div />;
+      return <div>No items</div>
     }
-    return (
-      <div style={{ fontSize: 14 }}>
-        <br />
-        <Table bordered>
-          <thead>
-            <tr>
-              <th>Item</th>
-              <th>Image</th>
-            </tr>
-          </thead>
-          <tbody>
-            {items.map(function(item) {
-              return (
-                <tr>
-                  <td>
-                    {" "}
-                    {/* <DeleteEntry item={item.entryId} /> */}
-                    {item.item}
-                  </td>
-                  {/* <td>
-                    {item.latitude}, {item.longitude}
-                    <MapContainer lat={item.latitude} lng={item.longitude} />
-                  </td> */}
-                  <td>
-                    {item.img !== undefined && (
-                      <img
-                        style={{ height: 150 }}
-                        alt="display form"
-                        src={`data:image/jpeg;base64,${item.img.data}`}
-                      />
-                    )}
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </Table>
-      </div>
-    );
+    items = Object.values(items)
+    return <EntryPage items={items} />
   }
 
   render() {
-    return this.displayItems(this.props.items);
+    return this.displayEntries(this.props.items);
   }
 }
 
-export default Entries;
+function mapStateToProps(state) {
+  return {
+    items: state.items,
+    location: state.location
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    itemsActions: bindActionCreators(itemsActions, dispatch),
+    locationActions: bindActionCreators(locationActions, dispatch)
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Entries);
