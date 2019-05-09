@@ -51,6 +51,7 @@ const storage = multer.diskStorage({
     const img = fs.readFileSync(req.file.path)
     const encodeImage = img.toString('base64')
     const claims = new ClaimsForm()
+    console.log(claims)
     claims.img.contentType = req.file.mimetype,
     claims.img.image = new Buffer(encodeImage, 'base64')
     claims.claimantName = form["claimantName"]
@@ -86,8 +87,8 @@ const storage = multer.diskStorage({
     claims.witness2= form["witness2"]
     claims.witnessAddress2= form["witnessAddress2"]
     claims.witnessPhone2= form["witnessPhone2"]
-    claims.location = form["location"]
 
+    console.log("claims", claims)
         claims.save()
         .then(claims => {
         res.status(200).json({'claimsForm': 'claim form added successfully'});
@@ -108,7 +109,7 @@ app.get('/items', (function(req, res) {
   }))
 
 app.get('/pdf', (function(req, res) {
-    ClaimsForm.find(function(err, claimsForm) {
+    ClaimForm.find(function(err, claimsForm) {
         if (err) {
             console.log(err);
         } else {

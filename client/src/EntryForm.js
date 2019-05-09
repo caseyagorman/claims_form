@@ -95,11 +95,11 @@ class EntryForm extends React.Component {
       this.handleChange = this.handleChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
       this.handleNextClick = this.handleNextClick.bind(this);
+      this.displayField = this.displayField.bind(this)
       }
       
     componentDidMount(){
       this.props.locationActions.getLocation();
-      console.log(this.props.location)
     }
 
     handleSubmit(event) {
@@ -130,7 +130,6 @@ class EntryForm extends React.Component {
 }
 
     handleChange(event) {
-      console.log(this.props.location)
         if (event.target.name === "picture"){
         this.setState({ picture: event.target.files[0] });
         }
@@ -142,25 +141,26 @@ class EntryForm extends React.Component {
       }
 
     displayField(formFields) {
-        if (!formFields) {
-          this.setState({ formDisplaying: false })
+        if (formFields !== undefined) {
+          return formFields
         }
-    
-        return formFields;
+        else if (formFields === undefined) {
+        this.setState({ formDisplaying: false })
       }
+    }
 
 
     render() {
-      const idx = this.state.idx;
       return (
         <FormPage
-          idx={idx}
+          idx={this.state.idx}
           displayField = {this.displayField}
           formFields={formFields}
           handleNextClick={this.handleNextClick}
           handleChange={this.handleChange}
           incrementIdx={this.incrementIdx}
           handleSubmit={this.handleSubmit}
+          formDisplaying={this.state.formDisplaying}
         />
 
       );

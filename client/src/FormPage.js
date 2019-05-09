@@ -2,17 +2,21 @@ import React from "react";
 import {Form} from "react-bootstrap"
 const FormPage = props => (
   <div className="container" style={{fontFamily: "source sans pro"}}>
-  {/* <h1 style={{color: "gray", marginLeft: "20%", textAlign: "center", fontSize: 40}} >Enter Claim Information</h1> */}
   <div
     style= {{marginLeft: "25%", marginRight: "25%", marginTop: 30}} 
   >
+
+    
   
     <form style={{width:750}}onSubmit={e=>props.handleNextClick(e,  props.idx)}>
+      {props.formDisplaying && props.idx < props.formFields.length ? (
       <input onChange={props.handleChange} 
       style= {{height: 250, fontSize: 60, textAlign: "center", borderRadius: 5}}
       type={props.displayField(props.formFields[props.idx]).type} 
       name={props.displayField(props.formFields[props.idx]).name} 
       placeholder={props.displayField(props.formFields[props.idx]).placeholder} />
+      ) : <h1 style={{textAlign: "center"}} >Press submit to send to Coalition on Homelessness</h1>}
+     
       <div style= {{marginTop: 20}}>
       <button
       style={{ 

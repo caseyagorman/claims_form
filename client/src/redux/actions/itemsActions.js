@@ -21,7 +21,6 @@ export function receiveItems(items) {
 
 
 export function fetchItems() {
-  console.log("getting items")
   return dispatch => {
     return fetch(itemsApi(), {
       method: "GET",
