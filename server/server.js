@@ -4,14 +4,14 @@ const multer = require('multer');
 // const claimsFormRoutes = express.Router();
 const mongoose = require('mongoose');
 const PORT = 4000;
-const ClaimsForm = require('./ClaimsForm.model')
+const SFClaimsForm = require('./SFClaimsForm.model')
 const PDFDocument = require('pdfkit');
 const fs = require('fs');
 const app = express();
 const cors = require('cors');
 app.use(cors());
 app.use(bodyParser.urlencoded({extended: true}))
-mongoose.connect('mongodb://127.0.0.1:27017/ClaimsForm', { useNewUrlParser: true });
+mongoose.connect('mongodb://127.0.0.1:27017/sf_claims_form', { useNewUrlParser: true });
 
 const connection = mongoose.connection;
 
@@ -24,7 +24,7 @@ app.listen(PORT, function() {
 });
 
 app.get('/',function(req,res){
-    ClaimsForm.find(function(err, claimsForm) {
+    SFClaimsForm.find(function(err, claimsForm) {
     if (err) {
             console.log(err);
     } else {
@@ -50,8 +50,7 @@ const storage = multer.diskStorage({
     const form = JSON.parse(req.body.formText)
     const img = fs.readFileSync(req.file.path)
     const encodeImage = img.toString('base64')
-    const claims = new ClaimsForm()
-    console.log(claims)
+    const claims = new SFClaimsForm()
     claims.img.contentType = req.file.mimetype,
     claims.img.image = new Buffer(encodeImage, 'base64')
     claims.claimantName = form["claimantName"]
@@ -68,7 +67,7 @@ const storage = multer.diskStorage({
     claims.ssn= form["ssn"]
     claims.dateOfIncident= form["dateOfIncident"]
     claims.timeOfIncident= form["timeOfIncident"]
-    claims.location= form["location"]
+    claims.location= JSON.stringify(form["location"])
     claims.vehicle= form["vehicle"]
     claims.basisOfClaim= form["basisOfClaim"]
     claims.cityEmployeety= form["cityEmployeety"]
@@ -88,20 +87,31 @@ const storage = multer.diskStorage({
     claims.witnessAddress2= form["witnessAddress2"]
     claims.witnessPhone2= form["witnessPhone2"]
 
-    console.log("claims", claims)
-        claims.save()
-        .then(claims => {
-        res.status(200).json({'claimsForm': 'claim form added successfully'});
+    console.log("form is", form)
 
-    })
-        .catch(err => {
-        res.status(400).send('adding new claim form failed');
-    });
+    console.log("claims, post:", claims)
+    console.log("claims location", claims.location)
+        claims.save(err => {
+          console.log("err is:", err)
+          if (!err) {
+            res.status(200).json({'claimsForm': 'claim form added successfully'});
+          } else {
+            res.status(400).send('adding new claim form failed');
+          }
+        })
+    //     .then(claims => {
+    //       console.log("claims in callback", claims)
+    //     res.status(200).json({'claimsForm': 'claim form added successfully'});
+
+    // })
+    //     .catch(err => {
+    //     res.status(400).send('adding new claim form failed');
+    // });
 });
    
 
 app.get('/items', (function(req, res) {
-  ClaimsForm.find(function(err, claimsForm) {
+  SFClaimsForm.find(function(err, claimsForm) {
     console.log(claimsForm)
     if (err) return res.json({ success: false, error: err });
          return res.json({claimsForm})
@@ -109,7 +119,7 @@ app.get('/items', (function(req, res) {
   }))
 
 app.get('/pdf', (function(req, res) {
-    ClaimForm.find(function(err, claimsForm) {
+    SFClaimsForm.find(function(err, claimsForm) {
         if (err) {
             console.log(err);
         } else {

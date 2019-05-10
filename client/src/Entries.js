@@ -7,7 +7,6 @@ import * as locationActions from "./redux/actions/locationActions";
 class Entries extends Component {
   componentDidMount() {
     this.props.itemsActions.fetchItems();
-    this.props.locationActions.getLocation();
   }
 
   displayEntries(items){
@@ -17,23 +16,29 @@ class Entries extends Component {
     items = Object.values(items)
     return <EntryPage items={items} />
   }
+  displayMap(items){
+    if (!items) {
+      return <div>No items</div>
+    }
+    items = Object.values(items)
+    console.log("display map", items)
+  }
 
   render() {
     return this.displayEntries(this.props.items);
+    return this.displayMap(this.props.items)
   }
 }
 
 function mapStateToProps(state) {
   return {
     items: state.items,
-    location: state.location
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    itemsActions: bindActionCreators(itemsActions, dispatch),
-    locationActions: bindActionCreators(locationActions, dispatch)
+    itemsActions: bindActionCreators(itemsActions, dispatch)
   };
 }
 

@@ -5,9 +5,6 @@ const FormPage = props => (
   <div
     style= {{marginLeft: "25%", marginRight: "25%", marginTop: 30}} 
   >
-
-    
-  
     <form style={{width:750}}onSubmit={e=>props.handleNextClick(e,  props.idx)}>
       {props.formDisplaying && props.idx < props.formFields.length ? (
       <input onChange={props.handleChange} 

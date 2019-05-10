@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-let ClaimsForm = new Schema({
+let SFClaimsForm = new Schema({
      img: 
         { image: Buffer, contentType: String },
     
@@ -129,4 +129,4 @@ let ClaimsForm = new Schema({
   }
 })
 
-module.exports = mongoose.model('ClaimsForm', ClaimsForm)
+module.exports = mongoose.model('SFClaimsForm', SFClaimsForm)

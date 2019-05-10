@@ -44,8 +44,11 @@ export function addItem(entry) {
         Accept: "application/json"
     },
       body: entry
+    }
+    ).then(response => {
+      console.log("addItem shows response:", response)
     })
-      .then(response => response.json())
+      .then(response => response && response.ok ? response.json() : false)
       // .then(() => dispatch(fetchItems()));
   };
 }

@@ -22,22 +22,28 @@ const EntryPage = props => (
                   <td>
                     {" "}
                     {/* <DeleteEntry item={item.entryId} /> */}
-                    {item.name}
+                    {console.log(typeof(item.claimantName))}
+
+                    {item.claimantName}
                   </td>
                   <td>
-                    {item.latitude}, {item.longitude}
-                    <MapContainer lat={item.latitude} lng={item.longitude} />
+                    
+               
+                    {/* <MapContainer lat={JSON.parse(item.location).latitude} lng={JSON.parse(item.location).longitude} /> */}
                   </td> 
                   <td style={{width: 50}}>
+                  {console.log(typeof(item.img))}
+                  {console.log(typeof(item.img.image))}
+                  {console.log(typeof(item.img.image.data))}
                     {item.img  && (
                       <img
-                        style={{ height: 150, maxWidth: 300 }}
+                        // style={{ height: 150, maxWidth: 300 }}
                         alt="display form"
-                        src={`data:image/jpeg;base64,${item.img.data}`}
+                        src={`data:image/jpeg;base64,${item.img.image.data}`}
                       />
                     )}
                   </td>
-                  <td>{item.location}</td>
+                 
                   <td></td>
                 </tr>
               );
