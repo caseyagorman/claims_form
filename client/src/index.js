@@ -9,6 +9,8 @@ import { Provider } from "react-redux";
 import { Router, Route } from "react-router-dom";
 import configureStore from "./redux/store/configureStore";
 import history from "./history";
+import { PDFViewer } from '@react-pdf/renderer';
+import MyDocument from "./pdf"
 
 const initialState = {};
 const store = configureStore(initialState);
@@ -18,6 +20,8 @@ const AppRouter = () => (
     <AppNav/>
       <Route path="//" component={EntryForm} />
       <Route path="/items" component={Entries} />
+      <Route path="/pdf" component={PDFViewer(MyDocument)}/>
+
     </div>
   </Router>
 );

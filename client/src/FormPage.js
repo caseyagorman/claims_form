@@ -5,8 +5,10 @@ const FormPage = props => (
   <div
     style= {{marginLeft: "25%", marginRight: "25%", marginTop: 30}} 
   >
+
     <form style={{width:750}}onSubmit={e=>props.handleNextClick(e,  props.idx)}>
       {props.formDisplaying && props.idx < props.formFields.length ? (
+        // <div>{props.formFields[0].props.children[props.idx]}</div>
       <input onChange={props.handleChange} 
       style= {{height: 250, fontSize: 60, textAlign: "center", borderRadius: 5}}
       type={props.displayField(props.formFields[props.idx]).type} 

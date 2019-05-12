@@ -1,51 +1,339 @@
 import React, { Component } from "react";
-import FormPage from "./FormPage"
+// import FormPage from "./FormPage"
+import {Form} from "react-bootstrap"
 import * as itemsActions from "./redux/actions/itemsActions";
 import * as locationActions from "./redux/actions/locationActions";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
 
-const formFields = [
-  {name:"claimantName", type: "text",  placeholder: "name", label: "Claimant's Name"},
-  {name: "picture", type: "file",  placeholder: "picture", label: "picture"},
-  {name: "address1", type: "text",  placeholder: "address", label: "Claimant's Home Address"},
-  {name: "city1",type: "text", placeholder: "city", label: "City" }, 
-  {name: "state1", type: "text", placeholder: "state", label: "State"},
-  {name: "dayPhone1", type:"tel", placeholder: "daytime phone",  label: "Telephone"},
-  {name: "evePhone1", type:"tel", placeholder: "evening phone",  label: "Telephone"},
-  {name: "cellPhone1", type:"tel", placeholder: "cellular phone",  label: "Telephone"},
-  {name: "address2", type: "textArea", placeholder: "address", label: "Send Official Notices and Correspondence to:"},
-  {name: "city2",type: "text", placeholder: "city", label: "City" }, 
-  {name: "state2", type: "text", placeholder: "state", label: "State"},
-  {name: "dayPhone2", type:"tel", placeholder: "daytime phone",  label: "Telephone"},
-  {name: "evePhone2", type:"tel", placeholder: "evening phone",  label: "Telephone"},
-  {name: "cellPhone2", type:"tel", placeholder: "cellular phone",  label: "Telephone"},
-  {name: "dateOfBirth", type: "date", placeholder: "date of birth", label: "Date of Birth"},
-  {name: "ssn", type: "password", placeholder: "social security number", label: "Social Security Number"},
-  {name: "dateOfIncident", type: "date", placeholder: "date of incident", label: "Date of Incident"},
-  {name: "timeOfIncident", type: "time", placeholder:"time of incident", label: "Time of Incident"},
-  {name: "location", type: "text", placeholder: "location", label:"Location of Incident or Accident"},
-  {name: "vehicle", type: "text", placeholder:"license plate #, type, mileage, and year ", label: "Claimant Vehicle License Plate #, Type, Mileage, and Year"},
-  {name: "basisOfClaim", type: "textArea", placeholder: "State in detail all the facts and circumstances of the incident. Identify all persons, property, and City departments involved.  State why you believe the City is responsible for the alleged injury, property damage, or loss", label: "Basis of Claim"},
-  {name: "cityEmployee", type: "text", placeholder: "", label: "Name, I.D, Number and City Department of City Employee who allegedly caused injury or loss"},
-  {name: "description", type: "textArea", placeholder: "description", label: "Description of Claimant's injury damage or loss"},
-  {name: "item1", type: "text", placeholder: "item", label:"item"},
-  {name: "amount1", type: "text", placeholder: "amount", label:"$"},
-  {name: "item2", type: "text", placeholder: "item", label:"item"},
-  {name: "amount2", type: "text", placeholder: "amount", label:"$"},
-  {name: "item3", type: "text", placeholder: "item", label:"item"},
-  {name: "amount3", type: "text", placeholder: "amount", label:"$"},
-  {name: "item4", type: "text", placeholder: "item", label:"item"},
-  {name: "amount4", type: "text", placeholder: "amount", label:"$"},
-  {name: "total", type: "text", placeholder: "total", label:"$"},
-  {name: "witness1", type: "text", placeholder: "witness 1", label: "Witnesses (if any) Name"},
-  {name: "witnessAddress1", type: "text", placeholder: "witness address", label: ""},
-  {name: "witnessPhone1", type: "tel", placeholder: "witness phone", label: ""},
-  {name: "witness2", type: "text", placeholder: "witness 2", label: "Witnesses (if any) Name"},
-  {name: "witnessAddress2", type: "text", placeholder: "witness address", label: ""},
-  {name: "witnessPhone2", type: "tel", placeholder: "witness phone", label: ""}
-]
+class Address extends Component{
+  render(){
+  return (<React.Fragment>
+    <input 
+      onChange={this.props.onChange}
+      name="claimantName"
+      type="text"
+      placeholder="name"
+      label="Claimant's Name"/>
+      
+    <input 
+      onChange={this.props.onChange}
+      name="address1"
+      type="text"
+      placeholder="address"
+      label="address"/>
+
+      <input 
+      onChange={this.props.onChange}
+      name="city1"
+      type="text"
+      placeholder="city"
+      label="city"/>
+
+      <input 
+      onChange={this.props.onChange}
+      name="state1"
+      type="text"
+      placeholder="state"
+      label="state"/>
+      </React.Fragment>
+      
+ )
+}
+}
+
+class Phone extends Component{
+  render(){
+  return (<React.Fragment>
+    <input 
+      onChange={this.props.onChange}
+      name="dayPhone1"
+      type="tel"
+      placeholder="daytime phone"
+      label="phone"/>
+
+      <input 
+      onChange={this.props.onChange}
+      name="evePhone1"
+      type="tel"
+      placeholder="evening phone"
+      label="evening phone"/>
+
+      <input 
+      onChange={this.props.onChange}
+      name="cellPhone1"
+      type="tel"
+      placeholder="cell phone"
+      label="cell phone"/>
+      </React.Fragment>
+ )
+}
+}
+class Address2 extends Component{
+  render(){
+  return (<React.Fragment>
+    <input 
+      onChange={this.props.onChange}
+      name="address2"
+      type="text"
+      placeholder="address"
+      label="address"/>
+
+      <input 
+      onChange={this.props.onChange}
+      name="city2"
+      type="text"
+      placeholder="city"
+      label="city"/>
+
+      <input 
+      onChange={this.props.onChange}
+      name="state2"
+      type="text"
+      placeholder="state"
+      label="state"/>
+      </React.Fragment>
+ )
+}
+}
+class Phone2 extends Component{
+  render(){
+  return (<React.Fragment>
+    <input 
+      onChange={this.props.onChange}
+      name="dayPhone2"
+      type="tel"
+      placeholder="daytime phone"
+      label="phone"/>
+
+      <input 
+      onChange={this.props.onChange}
+      name="evePhone2"
+      type="tel"
+      placeholder="evening phone"
+      label="evening phone"/>
+
+      <input 
+      onChange={this.props.onChange}
+      name="cellPhone2"
+      type="tel"
+      placeholder="cell phone"
+      label="cell phone"/>
+      </React.Fragment>
+ )
+}
+}
+
+class Incident extends Component{
+  render(){
+  return (<React.Fragment>
+    <input 
+      onChange={this.props.onChange}
+      name="dateOfIncident"
+      type="date"
+      placeholder="date of incident"
+      label="date"/>
+
+      <input 
+      onChange={this.props.onChange}
+      name="timeOfIncident"
+      type="time"
+      placeholder="time"
+      label="time"/>
+
+    <input 
+      onChange={this.props.onChange}
+      name="location"
+      type="text"
+      placeholder="location"
+      label="location"/>
+    
+    <input 
+      onChange={this.props.onChange}
+      name="basisOfClaim"
+      type="text"
+      placeholder="basis of claim"
+      label="basisOfClaim"/>
+    
+    <input 
+      onChange={this.props.onChange}
+      name="description"
+      type="text"
+      placeholder="description"
+      label="description"/>
+    
+    <input 
+      onChange={this.props.onChange}
+      name="cityEmployee"
+      type="text"
+      placeholder="City Employee"
+      label="city employee"/>
+    
+    <input 
+      onChange={this.props.onChange}
+      name="vehicle"
+      type="text"
+      placeholder="vehicle"
+      label="vehicle"/>
+      </React.Fragment>
+ )
+}
+}
+
+class Personal extends Component{
+  render(){
+  return (<React.Fragment>
+    <input 
+      onChange={this.props.onChange}
+      name="dateOfBirth"
+      type="date"
+      placeholder="date of birth"
+      label="date"/>
+
+      <input 
+      onChange={this.props.onChange}
+      name="ssn"
+      type="password"
+      placeholder="ssn"
+      label="ssn"/>
+
+      </React.Fragment>
+ )
+}
+}
+
+class Items extends Component{
+  render(){
+  return (<React.Fragment>
+    <input 
+      onChange={this.props.onChange}
+      name="item1"
+      type="text"
+      placeholder="item 1"
+      label="item"/>
+
+      <input 
+      onChange={this.props.onChange}
+      name="amount1"
+      type="text"
+      placeholder="amount 1"
+      label="amount"/>
+
+      <input 
+      onChange={this.props.onChange}
+      name="item2"
+      type="text"
+      placeholder="item 2"
+      label="item"/>
+
+      <input 
+      onChange={this.props.onChange}
+      name="amount2"
+      type="text"
+      placeholder="amount 2"
+      label="amount"/>
+
+      <input 
+      onChange={this.props.onChange}
+      name="item3"
+      type="text"
+      placeholder="item 3"
+      label="item"/>
+
+      <input 
+      onChange={this.props.onChange}
+      name="amount3"
+      type="text"
+      placeholder="amount 3"
+      label="amount"/>
+
+      <input 
+      onChange={this.props.onChange}
+      name="item4"
+      type="text"
+      placeholder="item 4"
+      label="item"/>
+
+      <input 
+      onChange={this.props.onChange}
+      name="amount4"
+      type="text"
+      placeholder="amount 4"
+      label="amount"/>
+
+
+      <input 
+      onChange={this.props.onChange}
+      name="total"
+      type="text"
+      placeholder="total"
+      label="total"/>
+      </React.Fragment>
+ )
+}
+}
+class Witness extends Component{
+  render(){
+  return (<React.Fragment>
+    <input 
+      onChange={this.props.onChange}
+      name="witness1"
+      type="text"
+      placeholder="witness 1"
+      label="witness"/>
+
+      <input 
+      onChange={this.props.onChange}
+      name="witnessAddress1"
+      type="text"
+      placeholder="witness address 1"
+      label="witness address"/>
+
+      <input 
+      onChange={this.props.onChange}
+      name="witnessPhone1"
+      type="text"
+      placeholder="witness phone 1"
+      label="witness phone"/>
+
+      <input 
+      onChange={this.props.onChange}
+      name="witness2"
+      type="text"
+      placeholder="witness 2"
+      label="witness"/>
+
+      <input 
+      onChange={this.props.onChange}
+      name="witnessAddress2"
+      type="text"
+      placeholder="witness address 2"
+      label="witness address"/>
+
+      <input 
+      onChange={this.props.onChange}
+      name="witnessPhone2"
+      type="text"
+      placeholder="witness phone"
+      label="witness phone"/>
+      </React.Fragment>
+ )
+}
+}
+class Picture extends Component{
+  render(){
+  return (<React.Fragment>
+    <input 
+      onChange={this.props.onChange}
+      name="picture"
+      type="file"
+      placeholder="picture"
+      label="picture"/>
+      </React.Fragment>
+  )}}
+
+
 class EntryForm extends Component {
     constructor(props) {
       super(props);
@@ -116,7 +404,6 @@ class EntryForm extends Component {
       let location = this.props.location
       formText["location"] = location
       formText = JSON.stringify(formText);
-      console.log(formText["location"])
       formData.append("formText", formText);
       const picture = this.state.picture;
       formData.append('picture', picture)
@@ -131,11 +418,14 @@ class EntryForm extends Component {
     handleNextClick(event, idx) {
       event.preventDefault();
       let new_idx = idx + 1;
+      console.log(idx, "handle next click")
+
       this.setState({ idx: new_idx });
       event.target.reset()
 }
 
     handleChange(event) {
+      console.log("changing state")
         if (event.target.name === "picture"){
         this.setState({ picture: event.target.files[0] });
         }
@@ -148,9 +438,7 @@ class EntryForm extends Component {
 
     displayField(formFields) {
         if (formFields !== undefined) {
-          console.log(this.props.location)
-
-          return formFields
+            return formFields
         }
         else if (formFields === undefined) {
           
@@ -160,17 +448,38 @@ class EntryForm extends Component {
 
 
     render() {
-      return (
-        <FormPage
-          idx={this.state.idx}
-          displayField = {this.displayField}
-          formFields={formFields}
-          handleNextClick={this.handleNextClick}
-          handleChange={this.handleChange}
-          incrementIdx={this.incrementIdx}
-          handleSubmit={this.handleSubmit}
-          formDisplaying={this.state.formDisplaying}
-        />
+      const formFields =  [
+        <React.Fragment>
+          <Address onChange={this.handleChange}/>
+          <Phone onChange={this.handleChange}/>
+          <Address2 onChange={this.handleChange} />
+          <Phone2 onChange={this.handleChange}/>
+          <Personal onChange={this.handleChange}/>
+          <Incident onChange={this.handleChange}/>
+          <Items onChange={this.handleChange}/>
+          <Witness onchange={this.handleChange}/>
+          <Picture onChange={this.handleChange}/>
+        </React.Fragment>
+      ]
+      console.log(this.state)
+      return ( 
+            <form style={{width:750}}onSubmit={e=>this.handleNextClick(e,  this.state.idx)}>
+            {this.state.formDisplaying && this.state.idx < formFields[0].props.children.length ? (
+            this.displayField(formFields[0].props.children[this.state.idx])
+            ) : <h1 style={{textAlign: "center"}} >Press submit to send to Coalition on Homelessness</h1>} 
+            <button
+              type="submit"
+              value="next"
+            >
+              Next
+            </button>
+          
+            <button
+              onClick={e => this.handleSubmit(e)}
+            >
+            Submit Form
+            </button>
+            </form>
 
       );
     }
