@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
-import { Button } from "react-bootstrap";
+import { Glyphicon } from "react-bootstrap";
 import * as itemsActions from "./redux/actions/itemsActions";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
@@ -27,7 +27,7 @@ class DeleteEntry extends Component {
         }}
         id="delete-button"
       >
-        {/* <Glyphicon */}
+        <Glyphicon
           onClick={this.submit}
           glyph="glyphicon glyphicon-trash"
           id="trash-can"

@@ -46,7 +46,7 @@ const formFields = [
   {name: "witnessAddress2", type: "text", placeholder: "witness address", label: ""},
   {name: "witnessPhone2", type: "tel", placeholder: "witness phone", label: ""}
 ]
-class EntryForm extends React.Component {
+class EntryForm extends Component {
     constructor(props) {
       super(props);
       this.state = {
@@ -113,11 +113,17 @@ class EntryForm extends React.Component {
                 formText[key] = stateObject[key]
         }
       }
-      formText["location"] = this.props.location
+      let location = this.props.location
+      formText["location"] = location
       formText = JSON.stringify(formText);
+      console.log(formText["location"])
       formData.append("formText", formText);
       const picture = this.state.picture;
       formData.append('picture', picture)
+      const blob = new Blob([formText], {
+        type: "application/json"
+      });
+      formData.append("document", blob);
       this.props.itemsActions.addItem(formData);
 
     }
@@ -142,9 +148,12 @@ class EntryForm extends React.Component {
 
     displayField(formFields) {
         if (formFields !== undefined) {
+          console.log(this.props.location)
+
           return formFields
         }
         else if (formFields === undefined) {
+          
         this.setState({ formDisplaying: false })
       }
     }

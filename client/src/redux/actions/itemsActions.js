@@ -1,21 +1,21 @@
 import * as types from "./actionTypes";
 function formApi() {
   // return `http://localhost:4000/claims-form/add`;
-  return `http://localhost:4000/form`;
+  return `http://localhost:5000/api/form`;
 
 }
 
 function itemsApi() {
   // return `http://localhost:4000/claims-form/add`;
-  return `http://localhost:4000/items`;
+  return `http://localhost:5000/api/items`;
 
 }
 
-// function deleteItemApi() {
-//   return "http://localhost:4000/api/delete-entry";
-// }
+function deleteItemApi() {
+  return "http://localhost:5000/api/delete-entry";
+}
+
 export function receiveItems(items) {
-  console.log(items)
   return { type: types.RECEIVE_ITEMS, items: items };
 }
 
@@ -31,7 +31,7 @@ export function fetchItems() {
       }
     })
       .then(response => response.json())
-      .then(items => dispatch(receiveItems(items.claimsForm)));
+      .then(items => dispatch(receiveItems(items)));
   };
 }
 
@@ -45,35 +45,23 @@ export function addItem(entry) {
     },
       body: entry
     }
-    ).then(response => {
-      console.log("addItem shows response:", response)
-    })
-      .then(response => response && response.ok ? response.json() : false)
-      // .then(() => dispatch(fetchItems()));
+    ).then(response => response && response.ok ? response.json() : false)
+      .then(() => dispatch(fetchItems()));
   };
 }
 
-// export function deleteItem(item) {
-//   return dispatch => {
-//     return fetch(deleteItemApi(), {
-//       method: "POST",
-//       mode: "cors",
-//       headers: {
-//         Accept: "application/json",
-//         "Content-Type": "application/json"
-//       },
-//       body: item
-//     })
-//       .then(response => response.json())
-//       // .then(() => dispatch(fetchItems()));
-//   };
-// }
-
-// export function answered(answer) {
-//   return {
-//     type: types.ANSWER,
-//     payload: {
-//       answer: answer
-//     }
-//   };
-// }
+export function deleteItem(item) {
+  return dispatch => {
+    return fetch(deleteItemApi(), {
+      method: "POST",
+      mode: "cors",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: item
+    })
+      .then(response => response.json())
+      .then(() => dispatch(fetchItems()));
+  };
+}
