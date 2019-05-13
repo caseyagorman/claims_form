@@ -9,6 +9,7 @@ class Entries extends Component {
   componentDidMount() {
     this.props.itemsActions.fetchItems();
   }
+  
 
   displayEntries(items){
     if (!items) {

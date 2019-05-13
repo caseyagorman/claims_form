@@ -1,10 +1,25 @@
-import React from "react"
+import React, {Component} from "react"
 import { Table } from "react-bootstrap";
 import DeleteEntry from "./DeleteEntry";
 import PdfPage from "./PdfPage"
-const EntryPage = props => (
 
-<div className="container" style={{ fontSize: 14 }}>
+
+class EntryPage extends Component { 
+  constructor(props){
+    super(props)
+    this.state = {displayingPDF: false} 
+    this.displayPDF = this.displayPDF.bind(this)
+  }
+
+  displayPDF(){
+    const newState = this.state.displayingPDF === false ? true : false 
+    this.setState({ displayingPDF: newState} )
+  }
+  
+  render(){
+    console.log("this", this)
+    return ( 
+      <div className="container" style={{ fontSize: 14 }}>
         <br />
         <Table bordered>
           <thead>
@@ -15,10 +30,11 @@ const EntryPage = props => (
     
             </tr>
           </thead>
-          <tbody>
-            {props.items.map(function(item) {
+          <tbody>, this
+            {this.props.items.map(item => {
               return (
                 <tr>
+                  {console.log("this", this)}
                   <td>
                     {" "}
                     <DeleteEntry item={item.entryId} />
@@ -35,7 +51,12 @@ const EntryPage = props => (
                       />
                     )}
                   </td>
-                  <td><PdfPage item={item}/></td>
+                  <td>
+                    <button onClick={this.displayPDF}></button>
+                    {this.state.displayingPDF && (
+                        <PdfPage item={item}/>
+                    )}
+                    </td>
                  
                 
                 </tr>
@@ -44,7 +65,8 @@ const EntryPage = props => (
           </tbody>
         </Table>
       </div>
-    );
-
+    )  
+  }
+}
 
 export default EntryPage

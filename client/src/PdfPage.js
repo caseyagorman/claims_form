@@ -48,7 +48,7 @@ const tableStyle = {
 // );
 
 const PdfPage = props => {
-  console.log(props.item)
+  console.log("props", props.item)
   const pdf = new jsPDF("p", "mm", "a4");
   const stringHTML = `<div>${props.item.claimantName}</div>
   <div>${props.item.address1}</div>
@@ -57,8 +57,9 @@ const PdfPage = props => {
   <div>${props.item.address1}</div>
   <div>${props.item.address1}</div><div>`
   pdf.fromHTML(stringHTML, 15, 20, {'width': 180});
-  // pdf.save("pdf");
-  return <div><button onClick={pdf.save('pdf')}></button></div>
+  pdf.save("pdf");
+  return <div></div>
+  // return <div><button onClick={pdf.save('pdf')}></button></div>
 
 }
 
