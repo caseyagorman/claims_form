@@ -1,7 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import Entries from "./Entries"
+import EntryTable from "./EntryTable"
+import Map from "./Map"
 import EntryForm from "./EntryForm"
 import AppNav from "./AppNav"
 import * as serviceWorker from "./serviceWorker";
@@ -9,8 +10,7 @@ import { Provider } from "react-redux";
 import { Router, Route } from "react-router-dom";
 import configureStore from "./redux/store/configureStore";
 import history from "./history";
-import { PDFViewer } from '@react-pdf/renderer';
-import MyDocument from "./pdf"
+// import Pdf from "./pdf"
 
 const initialState = {};
 const store = configureStore(initialState);
@@ -19,8 +19,9 @@ const AppRouter = () => (
     <div>
     <AppNav/>
       <Route path="//" component={EntryForm} />
-      <Route path="/items" component={Entries} />
-      <Route path="/pdf" component={PDFViewer(MyDocument)}/>
+      <Route path="/entries" component={EntryTable} />
+      <Route path="/map" component={Map} />
+      {/* <Route path="/pdf" component={Pdf}/> */}
 
     </div>
   </Router>

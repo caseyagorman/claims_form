@@ -1,7 +1,7 @@
 import React from "react"
 import { Table } from "react-bootstrap";
 import DeleteEntry from "./DeleteEntry";
-import MapContainer from "./MapContainer";
+import PdfPage from "./PdfPage"
 const EntryPage = props => (
 
 <div className="container" style={{ fontSize: 14 }}>
@@ -11,6 +11,7 @@ const EntryPage = props => (
             <tr>
               <th>Name</th>
               <th>Image</th>
+              <th>Print Pdf</th>
     
             </tr>
           </thead>
@@ -21,7 +22,6 @@ const EntryPage = props => (
                   <td>
                     {" "}
                     <DeleteEntry item={item.entryId} />
-                    {console.log(typeof(item.claimantName))}
 
                     {item.claimantName}
                   </td>
@@ -35,6 +35,7 @@ const EntryPage = props => (
                       />
                     )}
                   </td>
+                  <td><PdfPage items={props.items}/></td>
                  
                 
                 </tr>

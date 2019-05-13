@@ -31,7 +31,7 @@ function AppNav(props) {
         <a style= {{color: "white"}}href="https://www.cohsf.org/">Coalition on Homelessness</a> 
           </IconButton>
           <Typography variant="h6" color="inherit" style={{marginRight: 10}}>
-             <Link to={"/items"} style= {{color: "white"}}>Items</Link>
+             <Link to={"/entries"} style= {{color: "white"}}>Items</Link>
           </Typography>
           <Typography variant="h6" color="inherit">
              <Link to= {"/"} style= {{color: "white"}} href="//">Form</Link>
