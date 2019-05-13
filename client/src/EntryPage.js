@@ -35,7 +35,7 @@ const EntryPage = props => (
                       />
                     )}
                   </td>
-                  <td><PdfPage items={props.items}/></td>
+                  <td><PdfPage item={item}/></td>
                  
                 
                 </tr>

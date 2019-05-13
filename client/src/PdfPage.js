@@ -48,12 +48,17 @@ const tableStyle = {
 // );
 
 const PdfPage = props => {
-  console.log("props.items", props.items[0].address1)
-
+  console.log(props.item)
   const pdf = new jsPDF("p", "mm", "a4");
-  const stringHTML = `<div>${props.items[0].address1}</div>`
+  const stringHTML = `<div>${props.item.claimantName}</div>
+  <div>${props.item.address1}</div>
+  <div>${props.item.dayPhone1}</div>
+  <div>${props.item.address1}</div>
+  <div>${props.item.address1}</div>
+  <div>${props.item.address1}</div><div>`
   pdf.fromHTML(stringHTML, 15, 20, {'width': 180});
-  pdf.save("pdf");
+  // pdf.save("pdf");
+  return <div><button onClick={pdf.save('pdf')}></button></div>
 
 }
 
