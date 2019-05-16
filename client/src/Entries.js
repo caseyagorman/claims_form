@@ -16,6 +16,10 @@ class Entries extends Component {
       return <div>No items</div>
     }
     items = Object.values(items)
+    newItems = []
+    for (let i=0; i < items.length; i++){
+      console.log("in for loop", items[i])
+    }
     return <EntryPage items={items} />
   }
   displayMap(items){

@@ -17,7 +17,6 @@ class EntryPage extends Component {
   }
   
   render(){
-    console.log("this", this)
     return ( 
       <div className="container" style={{ fontSize: 14 }}>
         <br />
@@ -30,13 +29,11 @@ class EntryPage extends Component {
     
             </tr>
           </thead>
-          <tbody>, this
+          <tbody>
             {this.props.items.map(item => {
               return (
                 <tr>
-                  {console.log("this", this)}
                   <td>
-                    {" "}
                     <DeleteEntry item={item.entryId} />
 
                     {item.claimantName}
@@ -52,7 +49,7 @@ class EntryPage extends Component {
                     )}
                   </td>
                   <td>
-                    <button onClick={this.displayPDF}></button>
+                    <button onClick={this.displayPDF}> Print</button>
                     {this.state.displayingPDF && (
                         <PdfPage item={item}/>
                     )}

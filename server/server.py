@@ -30,6 +30,11 @@ def add_entry():
     address1 =data.get("address1", " ")
     city1 =data.get("city1"," ")
     state1 =data.get("state1", " ")
+    zip1 =data.get("zip1", " ")
+    address2 =data.get("address2", " ")
+    city2 =data.get("city2"," ")
+    state2 =data.get("state2", " ")
+    zip2 =data.get("zip2", " ")
     day_phone1 =data.get("dayPhone1"," ")
     eve_phone1 =data.get("evePhone1", " ")
     cell_phone1 =data.get("cellPhone1"," ")
@@ -69,6 +74,11 @@ def add_entry():
                                 address1 = address1,
                                 city1 = city1,
                                 state1 = state1,
+                                zip1 = zip1,
+                                address2 = address2,
+                                city2 = city2,
+                                state2 = state2,
+                                zip2 = zip2,
                                 day_phone1 = day_phone1,
                                 eve_phone1 = eve_phone1,
                                 cell_phone1 = cell_phone1,
@@ -105,6 +115,11 @@ def add_entry():
                                 address1 = address1,
                                 city1 = city1,
                                 state1 = state1,
+                                zip1 = zip1,
+                                address2 = address2,
+                                city2 = city2,
+                                state2 = state2,
+                                zip2 = zip2,
                                 day_phone1 = day_phone1,
                                 eve_phone1 = eve_phone1,
                                 cell_phone1 = cell_phone1,
@@ -155,7 +170,7 @@ def get_entries():
             "city1" : entry.city1,
             "state1" : entry.state1,
             "dayPhone1" : entry.day_phone1,
-            "eve_phone1" : entry.eve_phone1,
+            "evePhone1" : entry.eve_phone1,
             "cellPhone1" : entry.cell_phone1,
             "dayPhone2" : entry.day_phone2,
             "evePhone2" : entry.eve_phone2,

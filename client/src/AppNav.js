@@ -33,8 +33,11 @@ function AppNav(props) {
           <Typography variant="h6" color="inherit" style={{marginRight: 10}}>
              <Link to={"/entries"} style= {{color: "white"}}>Items</Link>
           </Typography>
+          <Typography variant="h6" color="inherit" style={{marginRight: 10}}>
+             <Link to= {"/"} style= {{color: "white"}} >Form</Link>
+          </Typography>
           <Typography variant="h6" color="inherit">
-             <Link to= {"/"} style= {{color: "white"}} href="//">Form</Link>
+             <Link to= {"/map"} style= {{color: "white"}}>Map</Link>
           </Typography>
         </Toolbar>
       </AppBar>

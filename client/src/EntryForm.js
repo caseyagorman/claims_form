@@ -37,6 +37,13 @@ class Address extends Component{
       type="text"
       placeholder="state"
       label="state"/>
+      
+      <input 
+      onChange={this.props.onChange}
+      name="zip1"
+      type="text"
+      placeholder="zip"
+      label="zip"/>
       </React.Fragment>
       
  )
@@ -93,6 +100,14 @@ class Address2 extends Component{
       type="text"
       placeholder="state"
       label="state"/>
+
+      <input 
+      onChange={this.props.onChange}
+      name="zip2"
+      type="text"
+      placeholder="zip"
+      label="zip2"/>
+
       </React.Fragment>
  )
 }
@@ -345,12 +360,14 @@ class EntryForm extends Component {
         address1: "",
         city1: "",
         state1:"",
+        zip1: "",
         dayPhone1: "",
         evePhone1: "",
         cellPhone1: "",
         address2: "",
         city2: "",
         state2:"",
+        zip2: "",
         dayPhone2: "",
         evePhone2: "",
         cellPhone2: "",

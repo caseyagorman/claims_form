@@ -50,12 +50,13 @@ const tableStyle = {
 const PdfPage = props => {
   console.log("props", props.item)
   const pdf = new jsPDF("p", "mm", "a4");
-  const stringHTML = `<div>${props.item.claimantName}</div>
-  <div>${props.item.address1}</div>
-  <div>${props.item.dayPhone1}</div>
-  <div>${props.item.address1}</div>
-  <div>${props.item.address1}</div>
-  <div>${props.item.address1}</div><div>`
+  const stringHTML = `<div> 1. Claimant's Name and Home Address (Please Print Clearly)
+    ${props.item.claimantName}
+  <span>${props.item.address1}<br/>
+  <div>${props.item.city1}<span> ${props.item.state1}</div>
+  <br/>
+  <div>Telephone ${props.item.dayPhone1}
+  <span>${props.item.evePhone1}</div>`
   pdf.fromHTML(stringHTML, 15, 20, {'width': 180});
   pdf.save("pdf");
   return <div></div>
