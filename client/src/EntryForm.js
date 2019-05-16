@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 // import FormPage from "./FormPage"
-import {Form} from "react-bootstrap"
+import {Form, FormGroup, FormControl, Label} from "react-bootstrap"
 import * as itemsActions from "./redux/actions/itemsActions";
 import * as locationActions from "./redux/actions/locationActions";
 import { connect } from "react-redux";
@@ -10,40 +10,51 @@ import { bindActionCreators } from "redux";
 class Address extends Component{
   render(){
   return (<React.Fragment>
-    <input 
+   Claimant's Name
+    <FormControl
+      style={{height: 50}}
       onChange={this.props.onChange}
       name="claimantName"
       type="text"
       placeholder="name"
-      label="Claimant's Name"/>
-      
-    <input 
+     />
+     <br></br>
+    Address
+    <FormControl
+      style={{height: 50,  marginLeft: 20}}
       onChange={this.props.onChange}
       name="address1"
       type="text"
       placeholder="address"
       label="address"/>
-
-      <input 
+      <br></br>
+      City
+      <FormControl
+      style={{height: 50, marginLeft: 20 }}
       onChange={this.props.onChange}
       name="city1"
       type="text"
       placeholder="city"
       label="city"/>
-
-      <input 
+      <br></br>
+      State
+      <FormControl
+      style={{height: 50, marginLeft: 20}}
       onChange={this.props.onChange}
       name="state1"
       type="text"
       placeholder="state"
       label="state"/>
-      
-      <input 
+      <br></br>
+      Zip
+      <FormControl
+      style={{height: 50, marginLeft: 20}}
       onChange={this.props.onChange}
       name="zip1"
       type="text"
       placeholder="zip"
       label="zip"/>
+
       </React.Fragment>
       
  )
@@ -53,21 +64,21 @@ class Address extends Component{
 class Phone extends Component{
   render(){
   return (<React.Fragment>
-    <input 
+    <FormControl 
       onChange={this.props.onChange}
       name="dayPhone1"
       type="tel"
       placeholder="daytime phone"
       label="phone"/>
 
-      <input 
+      <FormControl 
       onChange={this.props.onChange}
       name="evePhone1"
       type="tel"
       placeholder="evening phone"
       label="evening phone"/>
 
-      <input 
+      <FormControl 
       onChange={this.props.onChange}
       name="cellPhone1"
       type="tel"
@@ -80,28 +91,28 @@ class Phone extends Component{
 class Address2 extends Component{
   render(){
   return (<React.Fragment>
-    <input 
+    <FormControl 
       onChange={this.props.onChange}
       name="address2"
       type="text"
       placeholder="address"
       label="address"/>
 
-      <input 
+      <FormControl 
       onChange={this.props.onChange}
       name="city2"
       type="text"
       placeholder="city"
       label="city"/>
 
-      <input 
+      <FormControl 
       onChange={this.props.onChange}
       name="state2"
       type="text"
       placeholder="state"
       label="state"/>
 
-      <input 
+      <FormControl 
       onChange={this.props.onChange}
       name="zip2"
       type="text"
@@ -115,21 +126,21 @@ class Address2 extends Component{
 class Phone2 extends Component{
   render(){
   return (<React.Fragment>
-    <input 
+    <FormControl 
       onChange={this.props.onChange}
       name="dayPhone2"
       type="tel"
       placeholder="daytime phone"
       label="phone"/>
 
-      <input 
+      <FormControl 
       onChange={this.props.onChange}
       name="evePhone2"
       type="tel"
       placeholder="evening phone"
       label="evening phone"/>
 
-      <input 
+      <FormControl 
       onChange={this.props.onChange}
       name="cellPhone2"
       type="tel"
@@ -143,49 +154,49 @@ class Phone2 extends Component{
 class Incident extends Component{
   render(){
   return (<React.Fragment>
-    <input 
+    <FormControl 
       onChange={this.props.onChange}
       name="dateOfIncident"
       type="date"
       placeholder="date of incident"
       label="date"/>
 
-      <input 
+      <FormControl 
       onChange={this.props.onChange}
       name="timeOfIncident"
       type="time"
       placeholder="time"
       label="time"/>
 
-    <input 
+    <FormControl 
       onChange={this.props.onChange}
       name="location"
       type="text"
       placeholder="location"
       label="location"/>
     
-    <input 
+    <FormControl 
       onChange={this.props.onChange}
       name="basisOfClaim"
       type="text"
       placeholder="basis of claim"
       label="basisOfClaim"/>
     
-    <input 
+    <FormControl 
       onChange={this.props.onChange}
       name="description"
       type="text"
       placeholder="description"
       label="description"/>
     
-    <input 
+    <FormControl 
       onChange={this.props.onChange}
       name="cityEmployee"
       type="text"
       placeholder="City Employee"
       label="city employee"/>
     
-    <input 
+    <FormControl 
       onChange={this.props.onChange}
       name="vehicle"
       type="text"
@@ -199,14 +210,14 @@ class Incident extends Component{
 class Personal extends Component{
   render(){
   return (<React.Fragment>
-    <input 
+    <FormControl 
       onChange={this.props.onChange}
       name="dateOfBirth"
       type="date"
       placeholder="date of birth"
       label="date"/>
 
-      <input 
+      <FormControl 
       onChange={this.props.onChange}
       name="ssn"
       type="password"
@@ -221,56 +232,56 @@ class Personal extends Component{
 class Items extends Component{
   render(){
   return (<React.Fragment>
-    <input 
+    <FormControl 
       onChange={this.props.onChange}
       name="item1"
       type="text"
       placeholder="item 1"
       label="item"/>
 
-      <input 
+      <FormControl 
       onChange={this.props.onChange}
       name="amount1"
       type="text"
       placeholder="amount 1"
       label="amount"/>
 
-      <input 
+      <FormControl 
       onChange={this.props.onChange}
       name="item2"
       type="text"
       placeholder="item 2"
       label="item"/>
 
-      <input 
+      <FormControl 
       onChange={this.props.onChange}
       name="amount2"
       type="text"
       placeholder="amount 2"
       label="amount"/>
 
-      <input 
+      <FormControl 
       onChange={this.props.onChange}
       name="item3"
       type="text"
       placeholder="item 3"
       label="item"/>
 
-      <input 
+      <FormControl 
       onChange={this.props.onChange}
       name="amount3"
       type="text"
       placeholder="amount 3"
       label="amount"/>
 
-      <input 
+      <FormControl 
       onChange={this.props.onChange}
       name="item4"
       type="text"
       placeholder="item 4"
       label="item"/>
 
-      <input 
+      <FormControl 
       onChange={this.props.onChange}
       name="amount4"
       type="text"
@@ -278,7 +289,7 @@ class Items extends Component{
       label="amount"/>
 
 
-      <input 
+      <FormControl 
       onChange={this.props.onChange}
       name="total"
       type="text"
@@ -291,42 +302,42 @@ class Items extends Component{
 class Witness extends Component{
   render(){
   return (<React.Fragment>
-    <input 
+    <FormControl 
       onChange={this.props.onChange}
       name="witness1"
       type="text"
       placeholder="witness 1"
       label="witness"/>
 
-      <input 
+      <FormControl 
       onChange={this.props.onChange}
       name="witnessAddress1"
       type="text"
       placeholder="witness address 1"
       label="witness address"/>
 
-      <input 
+      <FormControl 
       onChange={this.props.onChange}
       name="witnessPhone1"
       type="text"
       placeholder="witness phone 1"
       label="witness phone"/>
 
-      <input 
+      <FormControl 
       onChange={this.props.onChange}
       name="witness2"
       type="text"
       placeholder="witness 2"
       label="witness"/>
 
-      <input 
+      <FormControl 
       onChange={this.props.onChange}
       name="witnessAddress2"
       type="text"
       placeholder="witness address 2"
       label="witness address"/>
 
-      <input 
+      <FormControl 
       onChange={this.props.onChange}
       name="witnessPhone2"
       type="text"
@@ -339,7 +350,7 @@ class Witness extends Component{
 class Picture extends Component{
   render(){
   return (<React.Fragment>
-    <input 
+    <FormControl 
       onChange={this.props.onChange}
       name="picture"
       type="file"
@@ -435,14 +446,11 @@ class EntryForm extends Component {
     handleNextClick(event, idx) {
       event.preventDefault();
       let new_idx = idx + 1;
-      console.log(idx, "handle next click")
-
       this.setState({ idx: new_idx });
       event.target.reset()
 }
 
     handleChange(event) {
-      console.log("changing state")
         if (event.target.name === "picture"){
         this.setState({ picture: event.target.files[0] });
         }
@@ -480,11 +488,14 @@ class EntryForm extends Component {
       ]
       console.log(this.state)
       return ( 
-            <form style={{width:750}}onSubmit={e=>this.handleNextClick(e,  this.state.idx)}>
+        <div className="container" style={{marginTop: 50}}>
+            <form style={{width:900}}onSubmit={e=>this.handleNextClick(e,  this.state.idx)}>
             {this.state.formDisplaying && this.state.idx < formFields[0].props.children.length ? (
             this.displayField(formFields[0].props.children[this.state.idx])
             ) : <h1 style={{textAlign: "center"}} >Press submit to send to Coalition on Homelessness</h1>} 
+            <br></br>
             <button
+              style={{ fontSize: 18, margin: 10, backgroundColor: "white", borderRadius: 5,  border: "1px solid blue", height: 40, width: 100, color: "blue"}}
               type="submit"
               value="next"
             >
@@ -492,11 +503,14 @@ class EntryForm extends Component {
             </button>
           
             <button
+              style={{ fontSize: 18, margin: 10, backgroundColor: "rgb(224, 78, 78)",  borderRadius: 5, border: "1px solid rgb(224, 78, 78)", height: 40, width: 120, color: "white"}}
               onClick={e => this.handleSubmit(e)}
             >
             Submit Form
             </button>
+            
             </form>
+            </div>
 
       );
     }

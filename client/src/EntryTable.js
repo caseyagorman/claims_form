@@ -28,27 +28,10 @@ class EntryTable extends Component {
       newObject = {}
     }
 
-
-  
-  
-    // items = Object.values(items)
     
     return <EntryPage items={newItems} />
   }
 
-  // displayEntries(items){
-  //   if (!items) {
-  //     return <div>No items</div>
-  //   }
-  //   items = Object.values(items)
-  //   let newItems = []
-  //   for (key in items)
-  //   // for (let i=0; i < items.length; i++){
-  //   //   console.log("in for loop", items[i])
-  //   // }
-    
-  //   return <EntryPage items={items} />
-  // }
   render() {
     return this.displayEntries(this.props.items)
   }
