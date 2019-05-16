@@ -21,7 +21,7 @@ class Address extends Component{
      <br></br>
     Address
     <FormControl
-      style={{height: 50,  marginLeft: 20}}
+      style={{height: 50}}
       onChange={this.props.onChange}
       name="address1"
       type="text"
@@ -30,7 +30,7 @@ class Address extends Component{
       <br></br>
       City
       <FormControl
-      style={{height: 50, marginLeft: 20 }}
+      style={{height: 50}}
       onChange={this.props.onChange}
       name="city1"
       type="text"
@@ -39,7 +39,7 @@ class Address extends Component{
       <br></br>
       State
       <FormControl
-      style={{height: 50, marginLeft: 20}}
+      style={{height: 50}}
       onChange={this.props.onChange}
       name="state1"
       type="text"
@@ -48,7 +48,7 @@ class Address extends Component{
       <br></br>
       Zip
       <FormControl
-      style={{height: 50, marginLeft: 20}}
+      style={{height: 50}}
       onChange={this.props.onChange}
       name="zip1"
       type="text"
@@ -64,21 +64,27 @@ class Address extends Component{
 class Phone extends Component{
   render(){
   return (<React.Fragment>
+    Daytime phone number
     <FormControl 
+    style={{height: 50}}
       onChange={this.props.onChange}
       name="dayPhone1"
       type="tel"
       placeholder="daytime phone"
       label="phone"/>
-
+      <br></br>
+    Evening phone number
       <FormControl 
+      style={{height: 50}}
       onChange={this.props.onChange}
       name="evePhone1"
       type="tel"
       placeholder="evening phone"
       label="evening phone"/>
-
+      <br></br>
+    Cell phone number
       <FormControl 
+      style={{height: 50}}
       onChange={this.props.onChange}
       name="cellPhone1"
       type="tel"
@@ -91,28 +97,36 @@ class Phone extends Component{
 class Address2 extends Component{
   render(){
   return (<React.Fragment>
+    Address
     <FormControl 
+    style={{height: 50}}
       onChange={this.props.onChange}
       name="address2"
       type="text"
       placeholder="address"
       label="address"/>
-
+      <br></br>
+    City 
       <FormControl 
+      style={{height: 50}}
       onChange={this.props.onChange}
       name="city2"
       type="text"
       placeholder="city"
       label="city"/>
-
+      <br></br>
+    State
       <FormControl 
+      style={{height: 50}}
       onChange={this.props.onChange}
       name="state2"
       type="text"
       placeholder="state"
       label="state"/>
-
+      <br></br>
+    Zip
       <FormControl 
+      style={{height: 50}}
       onChange={this.props.onChange}
       name="zip2"
       type="text"
@@ -126,21 +140,27 @@ class Address2 extends Component{
 class Phone2 extends Component{
   render(){
   return (<React.Fragment>
+    Daytime Phone
     <FormControl 
+    style={{height: 50}}
       onChange={this.props.onChange}
       name="dayPhone2"
       type="tel"
       placeholder="daytime phone"
       label="phone"/>
-
+      <br></br>
+    Evening Phone 
       <FormControl 
+      style={{height: 50}}
       onChange={this.props.onChange}
       name="evePhone2"
       type="tel"
       placeholder="evening phone"
       label="evening phone"/>
-
+      <br></br>
+    Cell Phone
       <FormControl 
+      style={{height: 50}}
       onChange={this.props.onChange}
       name="cellPhone2"
       type="tel"
@@ -154,49 +174,63 @@ class Phone2 extends Component{
 class Incident extends Component{
   render(){
   return (<React.Fragment>
+    Date of Incident
     <FormControl 
+    style={{height: 50}}
       onChange={this.props.onChange}
       name="dateOfIncident"
       type="date"
       placeholder="date of incident"
       label="date"/>
-
+      <br></br>
+    Time of Incident
       <FormControl 
+      style={{height: 50}}
       onChange={this.props.onChange}
       name="timeOfIncident"
       type="time"
       placeholder="time"
       label="time"/>
-
+      <br></br>
+    Location of Incident
     <FormControl 
+    style={{height: 50}}
       onChange={this.props.onChange}
       name="location"
       type="text"
       placeholder="location"
       label="location"/>
-    
+      <br></br>
+    Basis of Claim
     <FormControl 
+    style={{height: 50}}
       onChange={this.props.onChange}
       name="basisOfClaim"
       type="text"
       placeholder="basis of claim"
       label="basisOfClaim"/>
-    
+      <br></br>
+    Description 
     <FormControl 
+    style={{height: 50}}
       onChange={this.props.onChange}
       name="description"
       type="text"
       placeholder="description"
       label="description"/>
-    
-    <FormControl 
+      <br></br>
+    City Employee
+    <FormControl
+    style={{height: 50}} 
       onChange={this.props.onChange}
       name="cityEmployee"
       type="text"
       placeholder="City Employee"
       label="city employee"/>
-    
+      <br></br>
+    Vehicle 
     <FormControl 
+    style={{height: 50}}
       onChange={this.props.onChange}
       name="vehicle"
       type="text"
@@ -210,14 +244,18 @@ class Incident extends Component{
 class Personal extends Component{
   render(){
   return (<React.Fragment>
+    Date of Birth
     <FormControl 
+    style={{height: 50}}
       onChange={this.props.onChange}
       name="dateOfBirth"
       type="date"
       placeholder="date of birth"
       label="date"/>
-
+      <br></br>
+    Social Security Number
       <FormControl 
+      style={{height: 50}}
       onChange={this.props.onChange}
       name="ssn"
       type="password"
@@ -226,70 +264,87 @@ class Personal extends Component{
 
       </React.Fragment>
  )
-}
+  }
 }
 
 class Items extends Component{
   render(){
   return (<React.Fragment>
+    Item 1
     <FormControl 
+    style={{height: 50}}
       onChange={this.props.onChange}
       name="item1"
       type="text"
       placeholder="item 1"
       label="item"/>
-
-      <FormControl 
+      <br></br>
+    Amount 1
+      <FormControl
+      style={{height: 50}} 
       onChange={this.props.onChange}
       name="amount1"
       type="text"
       placeholder="amount 1"
       label="amount"/>
-
+      <br></br>
+    Item 2
       <FormControl 
+      style={{height: 50}}
       onChange={this.props.onChange}
       name="item2"
       type="text"
       placeholder="item 2"
       label="item"/>
-
+      <br></br>
+    Amount 2
       <FormControl 
+      style={{height: 50}}
       onChange={this.props.onChange}
       name="amount2"
       type="text"
       placeholder="amount 2"
       label="amount"/>
-
+      <br></br>
+    Item 3
       <FormControl 
+      style={{height: 50}}
       onChange={this.props.onChange}
       name="item3"
       type="text"
       placeholder="item 3"
       label="item"/>
-
+      <br></br>
+    Amount 3
       <FormControl 
+      style={{height: 50}}
       onChange={this.props.onChange}
       name="amount3"
       type="text"
       placeholder="amount 3"
       label="amount"/>
-
+      <br></br>
+    Item 4
       <FormControl 
+      style={{height: 50}}
       onChange={this.props.onChange}
       name="item4"
       type="text"
       placeholder="item 4"
       label="item"/>
-
+      <br></br>
+    Amount 4
       <FormControl 
+      style={{height: 50}}
       onChange={this.props.onChange}
       name="amount4"
       type="text"
       placeholder="amount 4"
       label="amount"/>
-
-
+      <br></br>
+    Total
       <FormControl 
+      style={{height: 50}}
       onChange={this.props.onChange}
       name="total"
       type="text"
@@ -302,41 +357,47 @@ class Items extends Component{
 class Witness extends Component{
   render(){
   return (<React.Fragment>
+    Witness 1
     <FormControl 
       onChange={this.props.onChange}
       name="witness1"
       type="text"
       placeholder="witness 1"
       label="witness"/>
-
+      <br></br>
+    Witness Address
       <FormControl 
       onChange={this.props.onChange}
       name="witnessAddress1"
       type="text"
       placeholder="witness address 1"
       label="witness address"/>
-
+      <br></br>
+    Witness Phone 
       <FormControl 
       onChange={this.props.onChange}
       name="witnessPhone1"
       type="text"
       placeholder="witness phone 1"
       label="witness phone"/>
-
+      <br></br>
+    Witness 2
       <FormControl 
       onChange={this.props.onChange}
       name="witness2"
       type="text"
       placeholder="witness 2"
       label="witness"/>
-
+      <br></br>
+    Witness 2 Address
       <FormControl 
       onChange={this.props.onChange}
       name="witnessAddress2"
       type="text"
       placeholder="witness address 2"
       label="witness address"/>
-
+      <br></br>
+    Witness 2 Phone
       <FormControl 
       onChange={this.props.onChange}
       name="witnessPhone2"
@@ -350,12 +411,20 @@ class Witness extends Component{
 class Picture extends Component{
   render(){
   return (<React.Fragment>
+    <h4>Upload Image for use by Coalition on Homelessness </h4>
     <FormControl 
       onChange={this.props.onChange}
       name="picture"
       type="file"
       placeholder="picture"
       label="picture"/>
+      <br></br>
+   <p> I agree to allow Coalition on Homelessness to use this photo for map project
+    <input
+      style={{marginLeft: 5}}
+      onChange={this.props.handleCheckboxChange}
+      type="checkbox"
+    /></p>
       </React.Fragment>
   )}}
 
@@ -364,7 +433,8 @@ class EntryForm extends Component {
     constructor(props) {
       super(props);
       this.state = {
-        formDisplaying: true, 
+        formDisplaying: true,
+        consentToUse: false,  
         idx: 0,
         picture: [],
         claimantName: "",
@@ -412,6 +482,7 @@ class EntryForm extends Component {
       this.handleSubmit = this.handleSubmit.bind(this);
       this.handleNextClick = this.handleNextClick.bind(this);
       this.displayField = this.displayField.bind(this)
+      this.handleCheckboxChange = this.handleCheckboxChange.bind(this)
       }
       
     componentDidMount(){
@@ -441,6 +512,12 @@ class EntryForm extends Component {
       formData.append("document", blob);
       this.props.itemsActions.addItem(formData);
 
+    }
+
+    handleCheckboxChange(){
+      console.log("handle checkbox change")
+      const newState = this.state.consentToUse === false? true : false 
+      this.setState({consentToUse: newState})
     }
 
     handleNextClick(event, idx) {
@@ -483,7 +560,7 @@ class EntryForm extends Component {
           <Incident onChange={this.handleChange}/>
           <Items onChange={this.handleChange}/>
           <Witness onchange={this.handleChange}/>
-          <Picture onChange={this.handleChange}/>
+          <Picture handleCheckboxChange={this.handleCheckboxChange}  />
         </React.Fragment>
       ]
       console.log(this.state)
