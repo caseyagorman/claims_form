@@ -511,6 +511,7 @@ class EntryForm extends Component {
       });
       formData.append("document", blob);
       this.props.itemsActions.addItem(formData);
+      this.props.history.push("/map")
 
     }
 

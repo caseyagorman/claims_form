@@ -18,9 +18,11 @@ app.config['SECRET_KEY'] = 'super-secret'
 @cross_origin()
 def add_entry():
     file = request.files
-    print(file)
+    print("file", type(file))
+    print("document", type(file["document"]))
     image = file.get('picture', " ")
-    print("image", image)
+    # image = json.loads(image.read())
+    print("image", type(image))
     data = file['document'].read()
     data = json.loads(data)
     location = data.get("location", " ")
@@ -41,10 +43,10 @@ def add_entry():
     day_phone2 =data.get("dayPhone2"," ")
     eve_phone2 =data.get("evePhone2", " ")
     cell_phone2 =data.get("cellPhone2", " ")
-    date_of_birth =data.get("dateOfBirth", " ")
+    date_of_birth =data.get("dateOfBirth", None)
     ssn =data.get("ssn", " ")
-    date_of_incident =data.get("dateOfIncident", " ")
-    time_of_incident =data.get("timeOfIncident", " ")
+    date_of_incident =data.get("dateOfIncident", None)
+    time_of_incident =data.get("timeOfIncident",  None)
     vehicle =data.get("vehicle", " ")
     basis_of_claim =data.get("basisOfClaim", " ")
     city_employee =data.get("cityEmployee", " ")
@@ -62,14 +64,18 @@ def add_entry():
     witness_phone_1 =data.get("witnessPhone1", " ")
     witness_address_2 =data.get("witnessAddress2", " ")
     witness_phone_2 =data.get("witnessPhone2", " ")
-    time_of_incident = datetime.strptime(date_of_incident + " " + time_of_incident,'%Y-%m-%d %H:%M')
+    if time_of_incident:
+        time_of_incident = datetime.strptime(date_of_incident + " " + time_of_incident,'%Y-%m-%d %H:%M')
     if date_of_birth:
         date_of_birth = datetime.strptime(date_of_birth, '%Y-%m-%d')
     if date_of_incident:
         date_of_incident = datetime.strptime(date_of_incident, '%Y-%m-%d')
     
     if image:
-        image = image.read()
+        print(type(image))
+        image = base64.b64decode(image)
+        # image = psycopg2.Binary(image.read())
+        # image = image.read()
         new_entry = Entry(claimant_name = claimant_name,
                                 address1 = address1,
                                 city1 = city1,
