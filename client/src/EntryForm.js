@@ -506,10 +506,12 @@ class EntryForm extends Component {
       formData.append("formText", formText);
       const picture = this.state.picture;
       formData.append('picture', picture)
+      console.log("picture", picture)
       const blob = new Blob([formText], {
         type: "application/json"
       });
       formData.append("document", blob);
+      console.log("form data", formData.get(picture))
       this.props.itemsActions.addItem(formData);
       this.props.history.push("/map")
 
@@ -530,6 +532,7 @@ class EntryForm extends Component {
 
     handleChange(event) {
         if (event.target.name === "picture"){
+        console.log("it's a picture", event.target.files[0])
         this.setState({ picture: event.target.files[0] });
         }
      
@@ -561,7 +564,7 @@ class EntryForm extends Component {
           <Incident onChange={this.handleChange}/>
           <Items onChange={this.handleChange}/>
           <Witness onchange={this.handleChange}/>
-          <Picture handleCheckboxChange={this.handleCheckboxChange}  />
+          <Picture onChange={this.handleChange} handleCheckboxChange={this.handleCheckboxChange}  />
         </React.Fragment>
       ]
       console.log(this.state)

@@ -21,6 +21,7 @@ def add_entry():
     print("file", type(file))
     print("document", type(file["document"]))
     image = file.get('picture', " ")
+    print("first image", image)
     # image = json.loads(image.read())
     print("image", type(image))
     data = file['document'].read()
@@ -73,9 +74,10 @@ def add_entry():
     
     if image:
         print(type(image))
-        image = base64.b64decode(image)
+        # image = base64.b64decode(image)
+        print("adding image", image)
         # image = psycopg2.Binary(image.read())
-        # image = image.read()
+        image = image.read()
         new_entry = Entry(claimant_name = claimant_name,
                                 address1 = address1,
                                 city1 = city1,
@@ -169,6 +171,7 @@ def get_entries():
 
     items = []
     for entry in entries:
+        print("new entry", entry)
         item = {
             "entryId": entry.entry_id,
             "claimantName": entry.claimant_name,
@@ -206,12 +209,12 @@ def get_entries():
             "longitude" : entry.longitude
         }
         if entry.image:
+            print("image", type(entry.image))
             item['image'] = base64.encodestring(entry.image).decode('ascii')
         if entry.latitude:
             item['location'] = {'latitude': entry.latitude, 'longitude': entry.longitude}
 
         items.append(item)
-    print("getting items", items)
     return jsonify(items)
 
 

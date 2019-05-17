@@ -24,6 +24,7 @@ class EntryPage extends Component {
           <thead>
             <tr>
               <th>Name</th>
+              <th>Item</th> 
               <th>Image</th>
               <th>Print Pdf</th>
     
@@ -38,6 +39,7 @@ class EntryPage extends Component {
 
                     {item.claimantName}
                   </td>
+                  <td>{item.item1}</td>
                   <td style={{width: 50}}>
                     {item.image  && (
                     
@@ -49,7 +51,7 @@ class EntryPage extends Component {
                     )}
                   </td>
                   <td>
-                    <button onClick={this.displayPDF}> Print</button>
+                    <button className="btn btn-outline-primary"  onClick={this.displayPDF}> Print</button>
                     {this.state.displayingPDF && (
                         <PdfPage item={item}/>
                     )}
