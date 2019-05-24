@@ -5,33 +5,39 @@ import * as itemsActions from "./redux/actions/itemsActions";
 import * as locationActions from "./redux/actions/locationActions";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-
+import "./EntryForm.css"
 
 class Address extends Component{
   render(){
   return (
   <React.Fragment>
+    <h4> Claimant’s Name and Home Address</h4>
     <div class="form-group">
       <div className="row">
         <div className="col">
-          <label>Claimant's Name</label>
-          <input className="form-control"
+          <label>Name</label>
+          <input 
             onChange={this.props.onChange}
             name="claimantName"
             type="text"
             placeholder="name"
+            required="true"
             value={this.props.claimantName}
+            className={this.props.showErrors ? "form-control errors": "form-control"}
+
           />
         </div>
       </div>
       <div className="row">
         <div className="col">
           <label>Address</label>
-          <input className="form-control"
+          <input 
             onChange={this.props.onChange}
             name="address1"
             type="text"
             placeholder="address"
+            required="true"
+            className={this.props.showErrors ? "form-control errors": "form-control"}
             value={this.props.address1}
             />
         </div>
@@ -40,35 +46,38 @@ class Address extends Component{
       <div className="row">
         <div className="col">
           <label>City</label>
-          <input className="form-control"
-          onChange={this.props.onChange}
-          name="city1"
-          type="text"
-          placeholder="city"
-          value={this.props.city1}
-          />
+          <input 
+            className="form-control"
+            onChange={this.props.onChange}
+            name="city1"
+            type="text"
+            placeholder="city"
+            value={this.props.city1}
+            />
         </div>
 
         <div className="col">
           <label>State</label>
-          <input className="form-control"
-          onChange={this.props.onChange}
-          name="state1"
-          type="text"
-          placeholder="state"
-          value={this.props.state1}
-          />
+          <input 
+            className="form-control"
+            onChange={this.props.onChange}
+            name="state1"
+            type="text"
+            placeholder="state"
+            value={this.props.state1}
+            />
         </div>
 
         <div className="col">
           <label>Zipcode</label>
-          <input className="form-control"
-          onChange={this.props.onChange}
-          name="zip1"
-          type="text"
-          placeholder="zip"
-          value={this.props.zip1}
-          />
+          <input 
+            className="form-control"
+            onChange={this.props.onChange}
+            name="zip1"
+            type="text"
+            placeholder="zip"
+            value={this.props.zip1}
+            />
         </div>
       </div>
     </div>
@@ -83,35 +92,39 @@ class Phone extends Component{
   render(){
   return (
     <React.Fragment>
+      <h4>Telephone</h4>
       <div className="row">
         <div className="col">
           <label>Daytime phone number</label>
-          <input className="form-control" 
-            onChange={this.props.onChange}
-            name="dayPhone1"
-            type="tel"
-            placeholder="daytime phone"
-            value={this.props.dayPhone1}
+          <input 
+              className="form-control" 
+              onChange={this.props.onChange}
+              name="dayPhone1"
+              type="tel"
+              placeholder="daytime phone"
+              value={this.props.dayPhone1}
             />
         </div>
         <div className="col">
           <label>Evening phone number</label>
-            <input className="form-control" 
-            onChange={this.props.onChange}
-            name="evePhone1"
-            type="tel"
-            placeholder="evening phone"
-            value={this.props.evePhone1}
+            <input 
+              className="form-control" 
+              onChange={this.props.onChange}
+              name="evePhone1"
+              type="tel"
+              placeholder="evening phone"
+              value={this.props.evePhone1}
             />
         </div>
         <div className="col">
           <label>Cell phone number</label>
-            <input className="form-control" 
-            onChange={this.props.onChange}
-            name="cellPhone1"
-            type="tel"
-            placeholder="cell phone"
-            value={this.props.cellPhone1}
+            <input 
+              className="form-control" 
+              onChange={this.props.onChange}
+              name="cellPhone1"
+              type="tel"
+              placeholder="cell phone"
+              value={this.props.cellPhone1}
             />
         </div>
       </div>
@@ -121,16 +134,21 @@ class Phone extends Component{
 }
 class Address2 extends Component{
   render(){
-  return (<React.Fragment>
+  return (
+  <React.Fragment>
+  <h4>Send official notices and correspondence to</h4>
+  <p>Leave blank if same as address</p>
   <div className="row">
         <div className="col">
           <label>Address</label>
-          <input className="form-control"
+          <input 
+            className="form-control"
             onChange={this.props.onChange}
             name="address2"
             type="text"
             placeholder="address"
             value={this.props.address2}
+            
             />
         </div>
       </div>
@@ -138,34 +156,37 @@ class Address2 extends Component{
       <div className="row">
         <div className="col">
           <label>City</label>
-          <input className="form-control"
-          onChange={this.props.onChange}
-          name="city2"
-          type="text"
-          placeholder="city"
-          value={this.props.city2}
+          <input 
+            className="form-control"
+            onChange={this.props.onChange}
+            name="city2"
+            type="text"
+            placeholder="city"
+            value={this.props.city2}
           />
         </div>
 
         <div className="col">
           <label>State</label>
-          <input className="form-control"
-          onChange={this.props.onChange}
-          name="state2"
-          type="text"
-          placeholder="state"
-          value={this.props.state2}
+          <input 
+            className="form-control"
+            onChange={this.props.onChange}
+            name="state2"
+            type="text"
+            placeholder="state"
+            value={this.props.state2}
           />
         </div>
 
         <div className="col">
           <label>Zipcode</label>
-          <input className="form-control"
-          onChange={this.props.onChange}
-          name="zip2"
-          type="text"
-          placeholder="zip"
-          value={this.props.zip2}
+          <input 
+            className="form-control"
+            onChange={this.props.onChange}
+            name="zip2"
+            type="text"
+            placeholder="zip"
+            value={this.props.zip2}
           />
         </div>
       </div>
@@ -178,10 +199,13 @@ class Phone2 extends Component{
   render(){
   return (
     <React.Fragment>
+      <h4>Telephone</h4>
+      <p>Leave blank if same as previous telephone</p>
       <div className="row">
         <div className="col">
-          <label>Daytime phone number</label>
-          <input className="form-control" 
+          <label>Daytime</label>
+          <input 
+            className="form-control" 
             onChange={this.props.onChange}
             name="dayPhone2"
             type="tel"
@@ -190,23 +214,25 @@ class Phone2 extends Component{
             />
         </div>
         <div className="col">
-          <label>Evening phone number</label>
-            <input className="form-control" 
-            onChange={this.props.onChange}
-            name="evePhone2"
-            type="tel"
-            placeholder="evening phone"
-            value={this.props.evePhone2}
+          <label>Evening</label>
+            <input 
+              className="form-control" 
+              onChange={this.props.onChange}
+              name="evePhone2"
+              type="tel"
+              placeholder="evening phone"
+              value={this.props.evePhone2}
             />
         </div>
         <div className="col">
-          <label>Cell phone number</label>
-            <input className="form-control" 
-            onChange={this.props.onChange}
-            name="cellPhone2"
-            type="tel"
-            placeholder="cell phone"
-            value={this.props.cellPhone2}
+          <label>Cellular</label>
+            <input 
+              className="form-control" 
+              onChange={this.props.onChange}
+              name="cellPhone2"
+              type="tel"
+              placeholder="cell phone"
+              value={this.props.cellPhone2}
             />
         </div>
       </div>
@@ -223,17 +249,21 @@ class Incident extends Component{
     <div className="row">
       <div className="col">
         <label>Date of Incident</label>
-        <input className="form-control"  
+        <input 
           onChange={this.props.onChange}
           name="dateOfIncident"
           type="date"
           placeholder="date of incident"
           value={this.props.dateOfIncident}
+          required="true"
+          className={this.props.showErrors ? "form-control errors": "form-control"}
+
           />
       </div>
       <div className="col">
         <label>Time of Incident</label>
-        <input className="form-control"  
+        <input 
+          className="form-control"  
           onChange={this.props.onChange}
           name="timeOfIncident"
           type="time"
@@ -252,22 +282,36 @@ class Incident extends Component{
           />
       </div>
     </div>
+    <br></br>
     <div className="row">
       <div className="col">
-        <label>Basis of Claim</label>
-        <textarea className="form-control" 
+      <label>Basis of Claim</label>
+      <p>State in detail all facts and circumstances of 
+        the incident. Identify all persons, entities, property and City
+         departments involved. State why you believe the City is responsible 
+         for the alleged injury, property damage or loss.</p>
+        
+        <textarea 
             onChange={this.props.onChange}
             name="basisOfClaim"
             type="text"
             placeholder="basis of claim"
             value={this.props.basisOfClaim}
+            required="true"
+            className={this.props.showErrors ? "form-control errors": "form-control"}
+
             />
       </div>
     </div>
+    <br></br>
     <div className="row">
       <div className="col">
-        <label>City Employee</label>
-        <input className="form-control"
+      <label>City Employee</label>
+        <p>Name, I.D. Number and City Department
+          of City Employee who allegedly caused injury or 
+          loss</p>
+        <input 
+          className="form-control"
           onChange={this.props.onChange}
           name="cityEmployee"
           type="text"
@@ -275,27 +319,50 @@ class Incident extends Component{
           value={this.props.cityEmployee}
           />
       </div>
+      <br></br>
       <div className="col">
-        <label>Vehicle</label>
-        <input className="form-control" 
+      
+        <label>Vehicle Type</label>
+        <p>Type of City Vehicle</p>
+        <br></br>
+        <br></br>
+        <input 
+          className="form-control" 
           onChange={this.props.onChange}
           name="vehicle"
           type="text"
           placeholder="vehicle"
-          value={this.props.vehicle}
+          value={this.props.vehicleType}
           />
       </div>
+      <div className="col">
+        <label>License Number</label>
+        <p>Vehicle License Number and Bus or Train Number</p>
+        <br></br>
+        <input 
+          className="form-control" 
+          onChange={this.props.onChange}
+          name="vehicle"
+          type="text"
+          placeholder="vehicle"
+          value={this.props.vehicleLicenseNumber}
+          />
+      </div>
+     
     </div>
+    <br></br>
     <div className="row">
       <div className="col">
         <label>Description</label>
         <textarea 
-          className="form-control" 
           onChange={this.props.onChange}
           name="description"
           type="text"
           placeholder="description"
+          required="true"
           value={this.props.description}
+          className={this.props.showErrors ? "form-control errors": "form-control"}
+
         />
       </div>  
     </div>
@@ -343,12 +410,12 @@ class Items extends Component{
       <div className="col">
         <label>Item 1</label>
         <input 
-          className="form-control" 
           onChange={this.props.onChange}
           name="item1"
           type="text"
           placeholder="item 1"
           value={this.props.item1}
+          className={this.props.showErrors ? "form-control errors": "form-control"}
         />
       </div>
 
@@ -360,6 +427,7 @@ class Items extends Component{
           name="amount1"
           type="text"
           placeholder="amount 1"
+          required="true"
           value={this.props.amount1}
           />
       </div>
@@ -458,55 +526,76 @@ class Items extends Component{
 }
 class Witness extends Component{
   render(){
-  return (<React.Fragment>
-    Witness 1
-    <input className="form-control" 
-      onChange={this.props.onChange}
-      name="witness1"
-      type="text"
-      placeholder="witness 1"
-      label="witness"/>
-      <br></br>
-    Witness Address
-      <input className="form-control" 
-      onChange={this.props.onChange}
-      name="witnessAddress1"
-      type="text"
-      placeholder="witness address 1"
-      label="witness address"/>
-      <br></br>
-    Witness Phone 
-      <input className="form-control" 
-      onChange={this.props.onChange}
-      name="witnessPhone1"
-      type="text"
-      placeholder="witness phone 1"
-      label="witness phone"/>
-      <br></br>
-    Witness 2
-      <input className="form-control" 
-      onChange={this.props.onChange}
-      name="witness2"
-      type="text"
-      placeholder="witness 2"
-      label="witness"/>
-      <br></br>
-    Witness 2 Address
-      <input className="form-control" 
-      onChange={this.props.onChange}
-      name="witnessAddress2"
-      type="text"
-      placeholder="witness address 2"
-      label="witness address"/>
-      <br></br>
-    Witness 2 Phone
-      <input className="form-control" 
-      onChange={this.props.onChange}
-      name="witnessPhone2"
-      type="text"
-      placeholder="witness phone"
-      label="witness phone"/>
-      </React.Fragment>
+  return (
+  <React.Fragment>
+    <h4>12.Witnesses (if any) Name</h4>
+    <div className="row">
+      <div className="col">
+        <label>1.</label>
+        <input className="form-control" 
+          onChange={this.props.onChange}
+          name="witness1"
+          type="text"
+          placeholder="witness 1"
+          value={this.props.witness1}
+          />
+      </div>
+      <div className="col">
+        <label>Address </label>
+        <input className="form-control" 
+          onChange={this.props.onChange}
+          name="witnessAddress1"
+          type="text"
+          placeholder="witness address 1"
+          value={this.props.witnessAddress1}
+          />
+      </div>
+      <div className="col">
+        <label>Phone </label> 
+        <input className="form-control" 
+        onChange={this.props.onChange}
+        name="witnessPhone1"
+        type="text"
+        placeholder="witness phone 1"
+        label="witness phone"
+        />
+      </div>
+    </div>
+
+    <div className="row">
+      <div className="col">
+        <label>2.</label>
+        <input className="form-control" 
+          onChange={this.props.onChange}
+          name="witness1"
+          type="text"
+          placeholder="witness 2"
+          value={this.props.witness1}
+          />
+      </div>
+      <div className="col">
+        <label></label>
+        <input className="form-control" 
+          onChange={this.props.onChange}
+          name="witnessAddress1"
+          type="text"
+          placeholder="witness address 2"
+          value={this.props.witnessAddress1}
+          />
+      </div>
+      <div className="col">
+        <label></label> 
+        <input 
+          className="form-control" 
+          onChange={this.props.onChange}
+          name="witnessPhone1"
+          type="text"
+          placeholder="witness phone 2"
+          value={this.props.witnessPhone2}
+        />
+      </div>
+    </div>
+  </React.Fragment>
  )
 }
 }
@@ -554,12 +643,13 @@ class EntryForm extends Component {
         dayPhone2: "",
         evePhone2: "",
         cellPhone2: "",
-        dateOfBirth: "",
+        dateOfBirth: null,
         ssn: "",
-        dateOfIncident: "",
-        timeOfIncident: "",
+        dateOfIncident: null,
+        timeOfIncident: null,
         locationOfIncident: "",
-        vehicle: "",
+        vehicleType: "",
+        vehicleLicenseNumber: "",
         basisOfClaim: "",
         cityEmployee: "",
         description: "",
@@ -578,6 +668,7 @@ class EntryForm extends Component {
         witness2: "",
         witnessAddress2: "",
         witnessPhone2: "",
+        showErrors: false
       };
 
       this.handleChange = this.handleChange.bind(this);
@@ -585,6 +676,7 @@ class EntryForm extends Component {
       this.handleNextClick = this.handleNextClick.bind(this);
       this.displayField = this.displayField.bind(this)
       this.handleCheckboxChange = this.handleCheckboxChange.bind(this)
+      this.checkDisabled = this.checkDisabled.bind(this)
       }
       
     componentDidMount(){
@@ -624,7 +716,6 @@ class EntryForm extends Component {
 
     handleNextClick(e, idx) {
       e.preventDefault();
-      console.log("handleNextClick", e.target.value)
       if (e.target.value === "next"){
         let new_idx = idx + 1;
         this.setState({ idx: new_idx });
@@ -636,14 +727,17 @@ class EntryForm extends Component {
         // e.target.reset()
 }
 
-    handleChange(event) {
+    handleChange(event, isDisabled) {
         if (event.target.name === "picture"){
         this.setState({ picture: event.target.files[0] });
         }
         else if (event.target.name !== "picture") {
         this.setState({ [event.target.name]: event.target.value });
         }
+      if (!isDisabled){
+        this.setState({showErrors: false})
       }
+    }
 
     displayField(formFields) {
         if (formFields !== undefined) {
@@ -653,27 +747,43 @@ class EntryForm extends Component {
         this.setState({ formDisplaying: false })
       }
     }
-
+    checkDisabled(isDisabled){
+      if (isDisabled === true){
+        this.setState({showErrors: true})
+      }
+      else if (!isDisabled){
+        this.setState({showErrors: false})
+      }
+    }
 
     render() {
+      console.log(this.state)
+      const isDisabled = (this.state.idx === 0 && this.state.claimantName === "")
+      || (this.state.idx === 0 && this.state.address1 === "")
+      || (this.state.idx===5 && this.state.dateOfIncident ==="") 
+      || (this.state.idx === 6 && this.state.item1 === "")
+      || (this.state.idx===5 && this.state.description==="") 
       const formFields =  [
         <React.Fragment>
           <Address 
-            onChange={this.handleChange} 
+            onChange={event=>this.handleChange(event, isDisabled)} 
             claimantName={this.state.claimantName} 
             address1={this.state.address1} 
             city1={this.state.city1} 
             state1={this.state.state1} 
             zip1={this.state.zip1}
+            showErrors={this.state.showErrors}
             />
           <Phone 
-            onChange={this.handleChange}
+            onChange={event=>this.handleChange(event, isDisabled)} 
+            // onChange={this.handleChange}
             dayPhone1={this.state.dayPhone1}
             evePhone1={this.state.evePhone1}
             cellPhone1={this.state.cellPhone1}
           />
           <Address2 
-            onChange={this.handleChange} 
+            onChange={event=>this.handleChange(event, isDisabled)} 
+            // onChange={this.handleChange} 
             address2={this.state.address2} 
             city2={this.state.city2} 
             state2={this.state.state2} 
@@ -681,28 +791,35 @@ class EntryForm extends Component {
           
           />
           <Phone2 
-            onChange={this.handleChange}
+            onChange={event=>this.handleChange(event, isDisabled)} 
+            // onChange={this.handleChange}
             dayPhone2={this.state.dayPhone2}
             evePhone2={this.state.evePhone2}
             cellPhone2={this.state.cellPhone2}
           />
           <Personal 
-            onChange={this.handleChange}
+            onChange={event=>this.handleChange(event, isDisabled)} 
+            // onChange={this.handleChange}
             dateOfBirth={this.state.dateOfBirth}
             ssn={this.state.ssn}
           />
           <Incident 
-            onChange={this.handleChange}
+            onChange={event=>this.handleChange(event, isDisabled)} 
+            // onChange={this.handleChange}
             dateOfIncident={this.state.dateOfIncident}
             timeOfIncident={this.state.timeOfIncident}
             locationOfIncident={this.state.locationOfIncident}
-            vehicle={this.state.vehicle}
+            vehicleLicenseNumber={this.state.vehicleLicenseNumber}
+            vehicleType={this.state.vehicleType}
             basisOfClaim={this.state.basisOfClaim}
             cityEmployee={this.state.cityEmployee}
             description={this.state.description}
+            showErrors={this.state.showErrors}
+
             />
           <Items 
-            onChange={this.handleChange}
+            onChange={event=>this.handleChange(event, isDisabled)} 
+            // onChange={this.handleChange}
             item1={this.state.item1}
             amount1={this.state.amount1}
             item2={this.state.item2}
@@ -711,9 +828,12 @@ class EntryForm extends Component {
             amount3={this.state.amount3}
             item4={this.state.item4}
             amount4={this.state.amount4}
+            showErrors={this.state.showErrors}
+
             />
           <Witness 
-            onchange={this.handleChange}
+            onChange={event=>this.handleChange(event, isDisabled)} 
+            // onchange={this.handleChange}
             witness1={this.state.witness1}
             witnessAddress1={this.state.witnessAddress1}
             witnessPhone1={this.state.witnessPhone1}
@@ -722,11 +842,13 @@ class EntryForm extends Component {
             witnessPhone2={this.state.witnessPhone2}
             />
           <Picture 
-            onChange={this.handleChange} 
+            onChange={event=>this.handleChange(event, isDisabled)} 
+            // onChange={this.handleChange} 
             handleCheckboxChange={this.handleCheckboxChange}  />
         </React.Fragment>
       ]
-      console.log(this.state)
+      // console.log(this.state)
+     
       return ( 
         <div className="container" style={{marginTop: 50}}>
           <form style={{width:900}}>
@@ -751,7 +873,9 @@ class EntryForm extends Component {
                 type="submit"
                 value="next"
                 onClick={e=>this.handleNextClick(e,  this.state.idx)}
-              
+                disabled={isDisabled}
+                onMouseEnter={()=>this.checkDisabled(isDisabled)}
+
               >
             Next
             </button>
