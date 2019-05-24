@@ -48,6 +48,7 @@ def add_entry():
     ssn =data.get("ssn", " ")
     date_of_incident =data.get("dateOfIncident", None)
     time_of_incident =data.get("timeOfIncident",  None)
+    location_of_incident =data.get("locationOfIncident",  " ")
     vehicle =data.get("vehicle", " ")
     basis_of_claim =data.get("basisOfClaim", " ")
     city_employee =data.get("cityEmployee", " ")
@@ -97,6 +98,7 @@ def add_entry():
                                 ssn = ssn,
                                 date_of_incident = date_of_incident,
                                 time_of_incident = time_of_incident,
+                                location_of_incident = location_of_incident,
                                 vehicle = vehicle,
                                 basis_of_claim = basis_of_claim,
                                 city_employee = city_employee,
@@ -138,6 +140,7 @@ def add_entry():
                                 ssn = ssn,
                                 date_of_incident = date_of_incident,
                                 time_of_incident = time_of_incident,
+                                location_of_incident = location_of_incident,
                                 vehicle = vehicle,
                                 basis_of_claim = basis_of_claim,
                                 city_employee = city_employee,
@@ -178,9 +181,14 @@ def get_entries():
             "address1": entry.address1,
             "city1" : entry.city1,
             "state1" : entry.state1,
+            "zip1": entry.zip1,
             "dayPhone1" : entry.day_phone1,
             "evePhone1" : entry.eve_phone1,
             "cellPhone1" : entry.cell_phone1,
+            "address2": entry.address2,
+            "city2" : entry.city2,
+            "state2" : entry.state2,
+            "zip2": entry.zip2,
             "dayPhone2" : entry.day_phone2,
             "evePhone2" : entry.eve_phone2,
             "cellPhone2" : entry.cell_phone2,
@@ -188,6 +196,7 @@ def get_entries():
             "ssn" : entry.ssn,
             "dateOfIncident" : entry.date_of_incident,
             "timeOfIncident" : entry.time_of_incident,
+            "locationOfIncident" : entry.location_of_incident,
             "vehicle" : entry.vehicle,
             "basisOfClaim" : entry.basis_of_claim,
             "cityEmployee" : entry.city_employee,

@@ -30,6 +30,7 @@ class Entry(db.Model):
     ssn = db.Column(db.String(9), nullable=True)
     date_of_incident = db.Column(db.DateTime, nullable=True, default=datetime.today)
     time_of_incident = db.Column(db.TIMESTAMP, nullable=False, default=datetime.today)
+    location_of_incident = db.Column(db.String(100), nullable=True)
     vehicle = (db.Column(db.String(25), nullable=True))
     basis_of_claim = db.Column(db.String(25), nullable=True)
     city_employee = db.Column(db.String(25), nullable=True)

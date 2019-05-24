@@ -83,11 +83,23 @@ const PdfPage = props => {
       Telephone ${props.item.dayPhone2}<span> ${props.item.evePhone2}<span> ${props.item.cellPhone2}</u>
 </div>
 `
-const DOB = `
+const dateOfBirth = `
 <b>3. Date of Birth</b> <br/> ${props.item.dateOfBirth.slice(0,-12)}`
 
 const SSN = `
 <b>4. SSN</b> <br/> ${props.item.ssn}`
+
+const dateOfIncident = `
+<b>5. Date of Incident</b> <br/> ${props.item.dateOfIncident.slice(0,-12)}`
+
+const timeOfIncident = `
+<b>6. Time Of Incident</b> <br/> ${props.item.timeOfIncident.slice(-12,-1)}`
+
+const location = 
+`<b>7. Location of Incident or Accident</b> <br/><b>**</b>${props.item.locationOfIncident}`
+
+const vehicle = 
+`<b>8. Claimant Vehicle License Plate, Type, Mileage, & Year</b> <br/><b>**</b>${props.item.vehicle}`
   // `<div> 1. Claimant's Name and Home Address (Please Print Clearly)
   //   ${props.item.claimantName}
   // <span>${props.item.address1}<br/>
@@ -95,19 +107,41 @@ const SSN = `
   // <br/>
   // <div>Telephone ${props.item.dayPhone1}
   // <span>${props.item.evePhone1}</div>`
+
+  const basisOfClaim = 
+  `<p><b>9. Basis of Claim. </b>State in detail all facts and circumstances of the incident. Identify all persons, entities, property and City
+  departments involved. State why you believe the City is responsible for the alleged injury, property damage or loss.</p> 
+  <br/>${props.item.basisOfClaim}`
+
+const employee = `Name, I.D. Number and City Department
+of City Employee who allegedly caused injury or loss<br/> ${props.item.employee}`
+
   pdf.fromHTML(header, 15, 20, {'width': 180});
   pdf.rect(5, 80, 100, 35);
   pdf.fromHTML(address1, 7, 70, {'width': 180});
   pdf.rect(108, 80, 100, 35);
   pdf.fromHTML(address2, 110, 70, {'width': 180});
   pdf.rect(5, 120, 48, 10);
-  pdf.fromHTML(DOB, 7, 115, {'width': 180});
+  pdf.fromHTML(dateOfBirth, 7, 115, {'width': 180});
   pdf.rect(57, 120, 48, 10);
   pdf.fromHTML(SSN, 57, 115, {'width': 180});
   pdf.rect(108, 120, 48, 10);
-  pdf.fromHTML(DOB, 110, 115, {'width': 180});
+  pdf.fromHTML(dateOfIncident, 110, 115, {'width': 180});
   pdf.rect(160, 120, 48, 10);
-  pdf.fromHTML(SSN, 160, 115, {'width': 180});
+  pdf.fromHTML(timeOfIncident, 160, 115, {'width': 180});
+
+  pdf.fromHTML(location, 7, 130, {'width': 180});
+  pdf.rect(5, 135, 100, 10);
+  pdf.fromHTML(vehicle, 110, 130, {'width': 180});
+  pdf.rect(108, 135, 100, 10);
+  pdf.fromHTML(basisOfClaim, 7, 146, {'width': 180});
+  pdf.rect(5, 150, 203, 30);
+  pdf.fromHTML(employee, 7, 182, {'width': 180});
+  pdf.rect(5, 185, 90, 7);
+  pdf.rect(5, 192, 90, 7);
+  pdf.fromHTML(employee, 87, 182, {'width': 180});
+  pdf.rect(95, 185, 30, 7);
+  pdf.rect(95, 192, 30, 7);
   pdf.save("pdf");
   return <div></div>
   // return <div><button onClick={pdf.save('pdf')}></button></div>
