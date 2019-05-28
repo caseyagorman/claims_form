@@ -6,87 +6,7 @@ import * as locationActions from "./redux/actions/locationActions";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import "./EntryForm.css"
-
-class Address extends Component{
-  render(){
-  return (
-  <React.Fragment>
-    <h4> Claimant’s Name and Home Address</h4>
-    <div class="form-group">
-      <div className="row">
-        <div className="col">
-          <label>Name</label>
-          <input 
-            onChange={this.props.onChange}
-            name="claimantName"
-            type="text"
-            placeholder="name"
-            required="true"
-            value={this.props.claimantName}
-            className={this.props.showErrors ? "form-control errors": "form-control"}
-
-          />
-        </div>
-      </div>
-      <div className="row">
-        <div className="col">
-          <label>Address</label>
-          <input 
-            onChange={this.props.onChange}
-            name="address1"
-            type="text"
-            placeholder="address"
-            required="true"
-            className={this.props.showErrors ? "form-control errors": "form-control"}
-            value={this.props.address1}
-            />
-        </div>
-      </div>
-
-      <div className="row">
-        <div className="col">
-          <label>City</label>
-          <input 
-            className="form-control"
-            onChange={this.props.onChange}
-            name="city1"
-            type="text"
-            placeholder="city"
-            value={this.props.city1}
-            />
-        </div>
-
-        <div className="col">
-          <label>State</label>
-          <input 
-            className="form-control"
-            onChange={this.props.onChange}
-            name="state1"
-            type="text"
-            placeholder="state"
-            value={this.props.state1}
-            />
-        </div>
-
-        <div className="col">
-          <label>Zipcode</label>
-          <input 
-            className="form-control"
-            onChange={this.props.onChange}
-            name="zip1"
-            type="text"
-            placeholder="zip"
-            value={this.props.zip1}
-            />
-        </div>
-      </div>
-    </div>
-
-  </React.Fragment>
-      
- )
-}
-}
+import Address1 from "./FormFields/Address1"
 
 class Phone extends Component{
   render(){
@@ -668,7 +588,14 @@ class EntryForm extends Component {
         witness2: "",
         witnessAddress2: "",
         witnessPhone2: "",
-        showErrors: false
+        errors: {
+          claimantName: false,
+          address1: false
+        },
+          touched: {
+            claimantName: false,
+            address1: false
+        }
       };
 
       this.handleChange = this.handleChange.bind(this);
@@ -676,7 +603,11 @@ class EntryForm extends Component {
       this.handleNextClick = this.handleNextClick.bind(this);
       this.displayField = this.displayField.bind(this)
       this.handleCheckboxChange = this.handleCheckboxChange.bind(this)
-      this.checkDisabled = this.checkDisabled.bind(this)
+      this.handleBlur = this.handleBlur.bind(this)
+      this.checkErrors = this.checkErrors.bind(this)
+
+
+      // this.checkDisabled = this.checkDisabled.bind(this)
       }
       
     componentDidMount(){
@@ -727,17 +658,36 @@ class EntryForm extends Component {
         // e.target.reset()
 }
 
-    handleChange(event, isDisabled) {
-        if (event.target.name === "picture"){
+    handleChange(event) {
+        console.log("handle change")
+        const name = event.target.name
+        if (name === "picture"){
         this.setState({ picture: event.target.files[0] });
         }
-        else if (event.target.name !== "picture") {
-        this.setState({ [event.target.name]: event.target.value });
+        else if (name !== "picture") {
+          if(this.state.errors[name]){
+            this.setState({errors: {...this.state.errors, [name]:false}})
+          }
+        this.setState({ [name]: event.target.value });
         }
-      if (!isDisabled){
-        this.setState({showErrors: false})
-      }
+      // if (!isDisabled){
+      //   this.setState({showErrors: false})
+      // }
     }
+
+    handleBlur(event){
+      console.log("handle blur")
+      let field = event.target.name
+      this.setState({ touched: {...this.state.touched, [field]: true},
+      }, () => this.checkErrors(field))
+  }
+
+    checkErrors(field){
+      if (this.state.touched[field] && !this.state[field].length){
+        this.setState({ errors: {...this.state.errors, [field]: true}})
+    }
+  }
+
 
     displayField(formFields) {
         if (formFields !== undefined) {
@@ -747,42 +697,41 @@ class EntryForm extends Component {
         this.setState({ formDisplaying: false })
       }
     }
-    checkDisabled(isDisabled){
-      if (isDisabled === true){
-        this.setState({showErrors: true})
-      }
-      else if (!isDisabled){
-        this.setState({showErrors: false})
-      }
-    }
+
+  
 
     render() {
-      console.log(this.state)
-      const isDisabled = (this.state.idx === 0 && this.state.claimantName === "")
-      || (this.state.idx === 0 && this.state.address1 === "")
-      || (this.state.idx===5 && this.state.dateOfIncident ==="") 
-      || (this.state.idx === 6 && this.state.item1 === "")
-      || (this.state.idx===5 && this.state.description==="") 
+      console.log(this.state.errors)
+      const isDisabled = (this.state.idx === 0 && this.state.errors.claimantName || this.state.errors.address1)
+
+      // const isDisabled = (this.state.idx === 0 && this.state.claimantName === "")
+      // || (this.state.idx === 0 && this.state.address1 === "")
+      // || (this.state.idx===5 && this.state.dateOfIncident ==="") 
+      // || (this.state.idx === 6 && this.state.item1 === "")
+      // || (this.state.idx===5 && this.state.description==="") 
       const formFields =  [
         <React.Fragment>
-          <Address 
-            onChange={event=>this.handleChange(event, isDisabled)} 
+          <Address1 
+            onChange={event=>this.handleChange(event)} 
             claimantName={this.state.claimantName} 
             address1={this.state.address1} 
             city1={this.state.city1} 
             state1={this.state.state1} 
             zip1={this.state.zip1}
-            showErrors={this.state.showErrors}
+            checkDisabled={this.checkDisabled}
+            handleBlur={this.handleBlur}
+            errors={this.state.errors}
+            // showErrors={this.state.showErrors}
             />
           <Phone 
-            onChange={event=>this.handleChange(event, isDisabled)} 
+            onChange={event=>this.handleChange(event)} 
             // onChange={this.handleChange}
             dayPhone1={this.state.dayPhone1}
             evePhone1={this.state.evePhone1}
             cellPhone1={this.state.cellPhone1}
           />
           <Address2 
-            onChange={event=>this.handleChange(event, isDisabled)} 
+            onChange={event=>this.handleChange(event)} 
             // onChange={this.handleChange} 
             address2={this.state.address2} 
             city2={this.state.city2} 
@@ -791,20 +740,20 @@ class EntryForm extends Component {
           
           />
           <Phone2 
-            onChange={event=>this.handleChange(event, isDisabled)} 
+            onChange={event=>this.handleChange(event)} 
             // onChange={this.handleChange}
             dayPhone2={this.state.dayPhone2}
             evePhone2={this.state.evePhone2}
             cellPhone2={this.state.cellPhone2}
           />
           <Personal 
-            onChange={event=>this.handleChange(event, isDisabled)} 
+            onChange={event=>this.handleChange(event)} 
             // onChange={this.handleChange}
             dateOfBirth={this.state.dateOfBirth}
             ssn={this.state.ssn}
           />
           <Incident 
-            onChange={event=>this.handleChange(event, isDisabled)} 
+            onChange={event=>this.handleChange(event)} 
             // onChange={this.handleChange}
             dateOfIncident={this.state.dateOfIncident}
             timeOfIncident={this.state.timeOfIncident}
@@ -818,7 +767,7 @@ class EntryForm extends Component {
 
             />
           <Items 
-            onChange={event=>this.handleChange(event, isDisabled)} 
+            onChange={event=>this.handleChange(event)} 
             // onChange={this.handleChange}
             item1={this.state.item1}
             amount1={this.state.amount1}
@@ -832,7 +781,7 @@ class EntryForm extends Component {
 
             />
           <Witness 
-            onChange={event=>this.handleChange(event, isDisabled)} 
+            onChange={event=>this.handleChange(event)} 
             // onchange={this.handleChange}
             witness1={this.state.witness1}
             witnessAddress1={this.state.witnessAddress1}
@@ -842,7 +791,7 @@ class EntryForm extends Component {
             witnessPhone2={this.state.witnessPhone2}
             />
           <Picture 
-            onChange={event=>this.handleChange(event, isDisabled)} 
+            onChange={event=>this.handleChange(event)} 
             // onChange={this.handleChange} 
             handleCheckboxChange={this.handleCheckboxChange}  />
         </React.Fragment>
@@ -874,7 +823,7 @@ class EntryForm extends Component {
                 value="next"
                 onClick={e=>this.handleNextClick(e,  this.state.idx)}
                 disabled={isDisabled}
-                onMouseEnter={()=>this.checkDisabled(isDisabled)}
+                // onMouseEnter={()=>this.checkDisabled(isDisabled)}
 
               >
             Next
