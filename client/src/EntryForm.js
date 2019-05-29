@@ -595,7 +595,8 @@ class EntryForm extends Component {
           touched: {
             claimantName: false,
             address1: false
-        }
+        },
+        isDisabled: false
       };
 
       this.handleChange = this.handleChange.bind(this);
@@ -605,9 +606,7 @@ class EntryForm extends Component {
       this.handleCheckboxChange = this.handleCheckboxChange.bind(this)
       this.handleBlur = this.handleBlur.bind(this)
       this.checkErrors = this.checkErrors.bind(this)
-
-
-      // this.checkDisabled = this.checkDisabled.bind(this)
+      this.checkDisabled = this.checkDisabled.bind(this)
       }
       
     componentDidMount(){
@@ -688,6 +687,11 @@ class EntryForm extends Component {
     }
   }
 
+    checkDisabled(isDisabled){
+      
+
+    }
+
 
     displayField(formFields) {
         if (formFields !== undefined) {
@@ -702,7 +706,7 @@ class EntryForm extends Component {
 
     render() {
       console.log(this.state.errors)
-      const isDisabled = (this.state.idx === 0 && this.state.errors.claimantName || this.state.errors.address1)
+      // const isDisabled = (this.state.idx === 0 && this.state.errors.claimantName || this.state.errors.address1)
 
       // const isDisabled = (this.state.idx === 0 && this.state.claimantName === "")
       // || (this.state.idx === 0 && this.state.address1 === "")
@@ -822,8 +826,8 @@ class EntryForm extends Component {
                 type="submit"
                 value="next"
                 onClick={e=>this.handleNextClick(e,  this.state.idx)}
-                disabled={isDisabled}
-                // onMouseEnter={()=>this.checkDisabled(isDisabled)}
+                disabled={this.state.isDisabled}
+                onMouseEnter={()=>this.checkDisabled(this.state.isDisabled)}
 
               >
             Next
