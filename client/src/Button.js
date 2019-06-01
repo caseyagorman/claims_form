@@ -7,7 +7,7 @@ const Button = props => (
         value="next"
         onClick={e=>props.handleNextClick(e,  props.idx)}
         disabled={props.isDisabled}
-        // onMouseEnter={e=>props.displayError(e)}
+        onMouseEnter={props.displayError}
     >
         Next
     </button>  

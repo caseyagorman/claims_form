@@ -65,11 +65,15 @@ class EntryForm extends Component {
       witness2: "",
       witnessAddress2: "",
       witnessPhone2: "",
-      touched: {
-        claimantName: false,
-        address1: false
-    },
-      isDisabled: false
+   
+      // isDisabled: false,
+        //   super(props)
+        //   this.state ={
+        //     formValid: false
+        //     }
+        // }
+    
+      // formValid: false
     };
 
       this.handleChange = this.handleChange.bind(this);
@@ -77,8 +81,7 @@ class EntryForm extends Component {
       this.handleNextClick = this.handleNextClick.bind(this);
       this.displayField = this.displayField.bind(this)
       this.handleCheckboxChange = this.handleCheckboxChange.bind(this)
-      this.handleBlur = this.handleBlur.bind(this)
-      this.checkInput = this.checkInput.bind(this)
+      // this.checkInput = this.checkInput.bind(this)
       }
       
   componentDidMount(){
@@ -119,7 +122,7 @@ class EntryForm extends Component {
     e.preventDefault();
     if (e.target.value === "next"){
       let new_idx = idx + 1;
-      this.setState({ idx: new_idx });
+      this.setState({ idx: new_idx }, this.setState({formValid:false}));
     }
     else if (e.target.value === "back"){
       let new_idx = idx - 1;
@@ -133,17 +136,9 @@ class EntryForm extends Component {
     this.setState({ picture: event.target.files[0] });
     }
     else if (name !== "picture") {
-      if(this.state.errors[name]){
-        this.setState({errors: {...this.state.errors, [name]:false}})
-      }
+    
     this.setState({ [name]: event.target.value });
     }
-  }
-
-  handleBlur(event){
-    let field = event.target.name
-    this.setState({ touched: {...this.state.touched, [field]: true},
-    }, () => this.checkInput(field))
   }
 
 
@@ -156,15 +151,7 @@ class EntryForm extends Component {
     }
   }
 
-
-  checkInput(fieldName, value){
-    this.setState({formErrors: formErrors,
-            }, this.validateForm)
-}
-
-validateForm(){
-    this.setState({formValid: "yay"})
-}
+ 
 
   
 
@@ -179,7 +166,7 @@ validateForm(){
       
       <React.Fragment>
         <Address1 
-          onChange={event=>this.handleChange(event)} 
+          handleChange={event=>this.handleChange(event)} 
           handleNextClick={event=>this.handleNextClick(event, this.state.idx)}
           idx={this.state.idx}
           // displayError={this.displayError}
@@ -189,19 +176,19 @@ validateForm(){
           // state1={this.state.state1} 
           // zip1={this.state.zip1}
           idxFields0={idxFields0}
-          
+          formValid={this.state.formValid}
           checkDisabled={this.checkDisabled}
-          handleBlur={this.handleBlur}
-          errors={this.state.errors}
+          // handleBlur={this.handleBlur}
+          formErrors={this.state.formErrors}
           />
         <Phone1 
-          onChange={event=>this.handleChange(event)} 
+          handleChange={event=>this.handleChange(event)} 
           dayPhone1={this.state.dayPhone1}
           evePhone1={this.state.evePhone1}
           cellPhone1={this.state.cellPhone1}
         />
         <Address2 
-          onChange={event=>this.handleChange(event)}  
+          handleChange={event=>this.handleChange(event)}  
           address2={this.state.address2} 
           city2={this.state.city2} 
           state2={this.state.state2} 
@@ -209,18 +196,18 @@ validateForm(){
         
         />
         <Phone2 
-          onChange={event=>this.handleChange(event)} 
+          handleChange={event=>this.handleChange(event)} 
           dayPhone2={this.state.dayPhone2}
           evePhone2={this.state.evePhone2}
           cellPhone2={this.state.cellPhone2}
         />
         <Personal 
-          onChange={event=>this.handleChange(event)} 
+          handleChange={event=>this.handleChange(event)} 
           dateOfBirth={this.state.dateOfBirth}
           ssn={this.state.ssn}
         />
         <Incident 
-          onChange={event=>this.handleChange(event)} 
+          handleChange={event=>this.handleChange(event)} 
           dateOfIncident={this.state.dateOfIncident}
           timeOfIncident={this.state.timeOfIncident}
           locationOfIncident={this.state.locationOfIncident}
@@ -233,7 +220,7 @@ validateForm(){
 
           />
         <Items 
-          onChange={event=>this.handleChange(event)} 
+          handleChange={event=>this.handleChange(event)} 
           item1={this.state.item1}
           amount1={this.state.amount1}
           item2={this.state.item2}
@@ -246,7 +233,7 @@ validateForm(){
 
           />
         <Witness 
-          onChange={event=>this.handleChange(event)} 
+          handleChange={event=>this.handleChange(event)} 
           witness1={this.state.witness1}
           witnessAddress1={this.state.witnessAddress1}
           witnessPhone1={this.state.witnessPhone1}
@@ -255,11 +242,11 @@ validateForm(){
           witnessPhone2={this.state.witnessPhone2}
           />
         <Picture 
-          onChange={event=>this.handleChange(event)}  
+          handleChange={event=>this.handleChange(event)}  
           handleCheckboxChange={this.handleCheckboxChange}  />
       </React.Fragment>
     ]
-    console.log(this.state)
+    // console.log(this.state)
     
     return ( 
       <div className="container" style={{marginTop: 50}}>
