@@ -9,7 +9,7 @@ class Personal extends Component {
             <label>Date of Birth</label>
             <input
               className="form-control"
-              onChange={this.props.onChange}
+              onChange={event => this.props.handleChange(event)}
               name="dateOfBirth"
               type="date"
               placeholder="date of birth"
@@ -20,7 +20,7 @@ class Personal extends Component {
             <label>Social Security Number</label>
             <input
               className="form-control"
-              onChange={this.props.onChange}
+              onChange={event => this.props.handleChange(event)}
               name="ssn"
               type="password"
               placeholder="ssn"

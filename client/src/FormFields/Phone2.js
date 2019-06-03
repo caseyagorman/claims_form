@@ -11,7 +11,7 @@ class Phone2 extends Component {
             <label>Daytime</label>
             <input
               className="form-control"
-              onChange={event => this.handleChange(event)}
+              onChange={event => this.props.handleChange(event)}
               name="dayPhone2"
               type="tel"
               placeholder="daytime phone"
@@ -22,7 +22,7 @@ class Phone2 extends Component {
             <label>Evening</label>
             <input
               className="form-control"
-              onChange={event => this.handleChange(event)}
+              onChange={event => this.props.handleChange(event)}
               name="evePhone2"
               type="tel"
               placeholder="evening phone"
@@ -33,7 +33,7 @@ class Phone2 extends Component {
             <label>Cellular</label>
             <input
               className="form-control"
-              onChange={event => this.handleChange(event)}
+              onChange={event => this.props.handleChange(event)}
               name="cellPhone2"
               type="tel"
               placeholder="cell phone"

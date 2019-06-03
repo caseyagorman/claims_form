@@ -64,15 +64,6 @@ class EntryForm extends Component {
       witness2: "",
       witnessAddress2: "",
       witnessPhone2: ""
-
-      // isDisabled: false,
-      //   super(props)
-      //   this.state ={
-      //     formValid: false
-      //     }
-      // }
-
-      // formValid: false
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -80,7 +71,6 @@ class EntryForm extends Component {
     this.handleNextClick = this.handleNextClick.bind(this);
     this.displayField = this.displayField.bind(this);
     this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
-    // this.checkInput = this.checkInput.bind(this)
   }
 
   componentDidMount() {
@@ -116,13 +106,13 @@ class EntryForm extends Component {
     this.setState({ consentToUse: newState });
   }
 
-  handleNextClick(e, idx) {
-    e.preventDefault();
-    console.log("handle next click", e, idx);
-    if (e.target.value === "next") {
+  handleNextClick(event, idx) {
+    event.preventDefault();
+    console.log("handle next click", event, idx);
+    if (event.target.value === "next") {
       let new_idx = idx + 1;
       this.setState({ idx: new_idx });
-    } else if (e.target.value === "back") {
+    } else if (event.target.value === "back") {
       let new_idx = idx - 1;
       this.setState({ idx: new_idx });
     }
@@ -203,7 +193,6 @@ class EntryForm extends Component {
           basisOfClaim={this.state.basisOfClaim}
           cityEmployee={this.state.cityEmployee}
           description={this.state.description}
-          showErrors={this.state.showErrors}
         />
         <Items
           handleChange={event => this.handleChange(event)}
@@ -217,7 +206,7 @@ class EntryForm extends Component {
           amount3={this.state.amount3}
           item4={this.state.item4}
           amount4={this.state.amount4}
-          showErrors={this.state.showErrors}
+          total={this.state.total}
         />
         <Witness
           handleChange={event => this.handleChange(event)}
@@ -247,17 +236,6 @@ class EntryForm extends Component {
             <div>
               {this.displayField(formFields[0].props.children[this.state.idx])}
               <br />
-              {/* {this.state.idx > 0 ? (
-              <button
-                className="btn btn-danger btn-lg"
-                type="submit"
-                value="back"
-                onClick={e=>this.handleNextClick(e,  this.state.idx)}
-                style={{marginRight: 5}}
-                >
-                Back
-            </button>
-            ) : <div></div>} */}
             </div>
           ) : (
             <div>

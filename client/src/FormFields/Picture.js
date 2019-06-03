@@ -6,7 +6,7 @@ class Picture extends Component {
       <React.Fragment>
         <h4>Upload Image for use by Coalition on Homelessness </h4>
         <input
-          onChange={this.props.onChange}
+          onChange={event => this.props.handleChange(event)}
           name="picture"
           type="file"
           placeholder="picture"

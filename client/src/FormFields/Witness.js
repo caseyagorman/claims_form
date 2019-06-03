@@ -10,7 +10,7 @@ class Witness extends Component {
             <label>1.</label>
             <input
               className="form-control"
-              onChange={this.props.onChange}
+              onChange={event => this.props.handleChange(event)}
               name="witness1"
               type="text"
               placeholder="witness 1"
@@ -21,7 +21,7 @@ class Witness extends Component {
             <label>Address </label>
             <input
               className="form-control"
-              onChange={this.props.onChange}
+              onChange={event => this.props.handleChange(event)}
               name="witnessAddress1"
               type="text"
               placeholder="witness address 1"
@@ -32,7 +32,7 @@ class Witness extends Component {
             <label>Phone </label>
             <input
               className="form-control"
-              onChange={this.props.onChange}
+              onChange={event => this.props.handleChange(event)}
               name="witnessPhone1"
               type="text"
               placeholder="witness phone 1"
@@ -46,30 +46,30 @@ class Witness extends Component {
             <label>2.</label>
             <input
               className="form-control"
-              onChange={this.props.onChange}
-              name="witness1"
+              onChange={event => this.props.handleChange(event)}
+              name="witness2"
               type="text"
               placeholder="witness 2"
-              value={this.props.witness1}
+              value={this.props.witness2}
             />
           </div>
           <div className="col">
             <label />
             <input
               className="form-control"
-              onChange={this.props.onChange}
-              name="witnessAddress1"
+              onChange={event => this.props.handleChange(event)}
+              name="witnessAddress2"
               type="text"
               placeholder="witness address 2"
-              value={this.props.witnessAddress1}
+              value={this.props.witnessAddress2}
             />
           </div>
           <div className="col">
             <label />
             <input
               className="form-control"
-              onChange={this.props.onChange}
-              name="witnessPhone1"
+              onChange={event => this.props.handleChange(event)}
+              name="witnessPhone2"
               type="text"
               placeholder="witness phone 2"
               value={this.props.witnessPhone2}

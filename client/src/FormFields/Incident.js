@@ -159,7 +159,7 @@ class Incident extends Component {
             <input
               className="form-control"
               onChange={event => this.props.handleChange(event)}
-              name="vehicle"
+              name="vehicleType"
               type="text"
               placeholder="vehicle"
               value={this.props.vehicleType}
@@ -172,7 +172,7 @@ class Incident extends Component {
             <input
               className="form-control"
               onChange={event => this.props.handleChange(event)}
-              name="vehicle"
+              name="vehicleLicenseNumber"
               type="text"
               placeholder="vehicle"
               value={this.props.vehicleLicenseNumber}

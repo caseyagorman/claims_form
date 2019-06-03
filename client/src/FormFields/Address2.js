@@ -11,7 +11,7 @@ class Address2 extends Component {
             <label>Address</label>
             <input
               className="form-control"
-              onChange={event => this.handleChange(event)}
+              onChange={event => this.props.handleChange(event)}
               name="address2"
               type="text"
               placeholder="address"
@@ -25,7 +25,7 @@ class Address2 extends Component {
             <label>City</label>
             <input
               className="form-control"
-              onChange={event => this.handleChange(event)}
+              onChange={event => this.props.handleChange(event)}
               name="city2"
               type="text"
               placeholder="city"
@@ -37,7 +37,7 @@ class Address2 extends Component {
             <label>State</label>
             <input
               className="form-control"
-              onChange={event => this.handleChange(event)}
+              onChange={event => this.props.handleChange(event)}
               name="state2"
               type="text"
               placeholder="state"
@@ -49,7 +49,7 @@ class Address2 extends Component {
             <label>Zipcode</label>
             <input
               className="form-control"
-              onChange={event => this.handleChange(event)}
+              onChange={event => this.props.handleChange(event)}
               name="zip2"
               type="text"
               placeholder="zip"
