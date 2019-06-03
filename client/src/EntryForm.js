@@ -162,6 +162,7 @@ class EntryForm extends Component {
         <Phone1
           handleChange={event => this.handleChange(event)}
           handleNextClick={event => this.handleNextClick(event, this.state.idx)}
+          idx={this.state.idx}
           dayPhone1={this.state.dayPhone1}
           evePhone1={this.state.evePhone1}
           cellPhone1={this.state.cellPhone1}
@@ -169,6 +170,7 @@ class EntryForm extends Component {
         <Address2
           handleChange={event => this.handleChange(event)}
           handleNextClick={event => this.handleNextClick(event, this.state.idx)}
+          idx={this.state.idx}
           address2={this.state.address2}
           city2={this.state.city2}
           state2={this.state.state2}
@@ -177,6 +179,7 @@ class EntryForm extends Component {
         <Phone2
           handleChange={event => this.handleChange(event)}
           handleNextClick={event => this.handleNextClick(event, this.state.idx)}
+          idx={this.state.idx}
           dayPhone2={this.state.dayPhone2}
           evePhone2={this.state.evePhone2}
           cellPhone2={this.state.cellPhone2}
@@ -184,12 +187,14 @@ class EntryForm extends Component {
         <Personal
           handleChange={event => this.handleChange(event)}
           handleNextClick={event => this.handleNextClick(event, this.state.idx)}
+          idx={this.state.idx}
           dateOfBirth={this.state.dateOfBirth}
           ssn={this.state.ssn}
         />
         <Incident
           handleChange={event => this.handleChange(event)}
           handleNextClick={event => this.handleNextClick(event, this.state.idx)}
+          idx={this.state.idx}
           dateOfIncident={this.state.dateOfIncident}
           timeOfIncident={this.state.timeOfIncident}
           locationOfIncident={this.state.locationOfIncident}
@@ -203,6 +208,7 @@ class EntryForm extends Component {
         <Items
           handleChange={event => this.handleChange(event)}
           handleNextClick={event => this.handleNextClick(event, this.state.idx)}
+          idx={this.state.idx}
           item1={this.state.item1}
           amount1={this.state.amount1}
           item2={this.state.item2}
@@ -216,6 +222,7 @@ class EntryForm extends Component {
         <Witness
           handleChange={event => this.handleChange(event)}
           handleNextClick={event => this.handleNextClick(event, this.state.idx)}
+          idx={this.state.idx}
           witness1={this.state.witness1}
           witnessAddress1={this.state.witnessAddress1}
           witnessPhone1={this.state.witnessPhone1}
@@ -226,6 +233,7 @@ class EntryForm extends Component {
         <Picture
           handleChange={event => this.handleChange(event)}
           handleNextClick={event => this.handleNextClick(event, this.state.idx)}
+          idx={this.state.idx}
           handleCheckboxChange={this.handleCheckboxChange}
         />
       </React.Fragment>

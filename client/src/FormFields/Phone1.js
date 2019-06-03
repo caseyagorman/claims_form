@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Button from "../Button";
 
 class Phone1 extends Component {
   render() {
@@ -41,6 +40,7 @@ class Phone1 extends Component {
             />
           </div>
         </div>
+        <br />
         <button
           className="btn btn-danger btn-lg"
           type="submit"
@@ -59,10 +59,6 @@ class Phone1 extends Component {
         >
           Next
         </button>
-        {/* <Button
-          handleNextClick={this.props.handleNextClick}
-          idx={this.props.idx}
-        /> */}
       </React.Fragment>
     );
   }

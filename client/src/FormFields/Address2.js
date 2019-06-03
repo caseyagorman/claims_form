@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Button from "../Button";
 
 class Address2 extends Component {
   render() {
@@ -12,7 +11,7 @@ class Address2 extends Component {
             <label>Address</label>
             <input
               className="form-control"
-              onChange={this.props.onChange}
+              onChange={event => this.handleChange(event)}
               name="address2"
               type="text"
               placeholder="address"
@@ -26,7 +25,7 @@ class Address2 extends Component {
             <label>City</label>
             <input
               className="form-control"
-              onChange={this.props.onChange}
+              onChange={event => this.handleChange(event)}
               name="city2"
               type="text"
               placeholder="city"
@@ -38,7 +37,7 @@ class Address2 extends Component {
             <label>State</label>
             <input
               className="form-control"
-              onChange={this.props.onChange}
+              onChange={event => this.handleChange(event)}
               name="state2"
               type="text"
               placeholder="state"
@@ -50,7 +49,7 @@ class Address2 extends Component {
             <label>Zipcode</label>
             <input
               className="form-control"
-              onChange={this.props.onChange}
+              onChange={event => this.handleChange(event)}
               name="zip2"
               type="text"
               placeholder="zip"
@@ -58,11 +57,25 @@ class Address2 extends Component {
             />
           </div>
         </div>
-
-        <Button
-          handleNextClick={this.props.handleNextClick}
-          idx={this.props.idx}
-        />
+        <br />
+        <button
+          className="btn btn-danger btn-lg"
+          type="submit"
+          value="back"
+          onClick={e => this.props.handleNextClick(e, this.props.idx)}
+          style={{ marginRight: 5 }}
+        >
+          Back
+        </button>
+        <button
+          className="btn btn-primary btn-lg"
+          type="submit"
+          value="next"
+          onClick={e => this.props.handleNextClick(e, this.props.idx)}
+          style={{ marginRight: 5 }}
+        >
+          Next
+        </button>
       </React.Fragment>
     );
   }

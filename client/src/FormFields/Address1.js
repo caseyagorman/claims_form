@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Button from "../Button";
 
 class Address1 extends Component {
   constructor(props) {
@@ -67,7 +66,7 @@ class Address1 extends Component {
                 name="claimantName"
                 type="text"
                 placeholder="name"
-                required="true"
+                required={true}
                 value={this.props.claimantName}
                 className={
                   this.state.formErrors.claimantName
@@ -86,7 +85,7 @@ class Address1 extends Component {
                 name="address1"
                 type="text"
                 placeholder="address"
-                required="true"
+                required={true}
                 className={
                   this.state.formErrors.address1
                     ? "form-control errors"
@@ -133,7 +132,7 @@ class Address1 extends Component {
             </div>
           </div>
         </div>
-
+        <br />
         <button
           className="btn btn-primary btn-lg"
           type="submit"
