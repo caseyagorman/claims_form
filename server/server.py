@@ -49,6 +49,7 @@ def add_entry():
     ssn = data.get("ssn", " ")
     date_of_incident = data.get("dateOfIncident", None)
     time_of_incident = data.get("timeOfIncident",  None)
+    time_of_incident = time_of_incident + ":00"
     location_of_incident = data.get("locationOfIncident",  " ")
     vehicle_type = data.get("vehicleType", " ")
     vehicle_license_number = data.get("vehicleLicenseNumber", " ")
@@ -68,9 +69,11 @@ def add_entry():
     witness_phone_1 = data.get("witnessPhone1", " ")
     witness_address_2 = data.get("witnessAddress2", " ")
     witness_phone_2 = data.get("witnessPhone2", " ")
-    if time_of_incident:
-        time_of_incident = datetime.strptime(
-            date_of_incident + " " + time_of_incident, '%Y-%m-%d %H:%M')
+    print(time_of_incident)
+    # if time_of_incident:
+        # print(time_of_incident)
+    time_of_incident = datetime.strptime(time_of_incident, '%H:%M:%S').time()
+    print("now", time_of_incident)
     if date_of_birth:
         date_of_birth = datetime.strptime(date_of_birth, '%Y-%m-%d')
     if date_of_incident:
@@ -179,7 +182,9 @@ def get_entries():
 
     items = []
     for entry in entries:
-        print("new entry", entry)
+        print("time", entry.time_of_incident)
+        print("date", entry.date_of_incident)
+        print("dob", entry.date_of_birth)
         item = {
             "entryId": entry.entry_id,
             "claimantName": entry.claimant_name,

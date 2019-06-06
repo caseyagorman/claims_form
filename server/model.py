@@ -31,7 +31,7 @@ class Entry(db.Model):
     date_of_incident = db.Column(
         db.DateTime, nullable=True, default=datetime.today)
     time_of_incident = db.Column(
-        db.TIMESTAMP, nullable=False, default=datetime.today)
+        db.TIME, nullable=False, default=datetime.time)
     location_of_incident = db.Column(db.String(100), nullable=True)
     vehicle_type = (db.Column(db.String(25), nullable=True))
     vehicle_license_number = (db.Column(db.String(25), nullable=True))

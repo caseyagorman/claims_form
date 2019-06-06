@@ -87,7 +87,9 @@ class EntryForm extends Component {
         formText[key] = stateObject[key];
       }
     }
+    
     let location = this.props.location;
+    // let location = {latitude: 37.856390, longitude: -122.276000}
     formText["location"] = location;
     formText = JSON.stringify(formText);
     formData.append("formText", formText);
